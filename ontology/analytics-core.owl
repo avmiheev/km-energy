@@ -1,0 +1,1468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#normalizationNote">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">описание формулы и базы нормирования</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#NormalizationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ClassificationRule">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Правило классификации (матрица ST×CE)</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b22"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b23"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b24"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b25"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b26"/>
+    <rdfs:comment xml:lang="ru">Правило классификации по сочетанию ST и модуля CE, представленное матрицей ST×CE. Категории — экземпляры LinkCategory; пороговый отбор рёбер задаётся отдельно у карты.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#factorVariation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#FactorVariation"/>
+    <rdfs:label xml:lang="ru">рассматривает изменение</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#hasEdge">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#MapEdge"/>
+    <rdfs:label xml:lang="ru">включает</rdfs:label>
+    <owl:inverseOf rdf:resource="https://w3id.org/km-energy/ontology#inMap"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#InfluenceAssessment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Оценка влияния фактора на показатель</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b50"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b51"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b52"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b53"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b54"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b55"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b56"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b57"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b58"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b59"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b60"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b61"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b62"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b63"/>
+    <rdfs:comment xml:lang="ru">Запись оценки пары фактор–показатель в одном эксперименте и на одном наборе данных; ST и CE относятся к этой записи. Одна и та же пара в январе и июле имеет разные записи оценки.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#stLow">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">нижняя граница классификации ST</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ClassificationRule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#CompleteAssessment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Оценка с заполненным паспортом</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b1"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b2"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b3"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b4"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b5"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b6"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b7"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b8"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b9"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:comment xml:lang="ru">Технический профиль записи для указанного в приложении линейного оценивателя: обязательные метаданные и результаты. Полнота полей не доказывает научную корректность или воспроизводимость. Не дополнительный блок рисунка 1.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#constraintLimit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ModelConstraint"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#NormativeValue"/>
+    <rdfs:label xml:lang="ru">использует</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#controlValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">нижний или контрольный уровень</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#stHigh">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">верхняя граница классификации ST</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ClassificationRule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ScenarioPreparation">
+    <rdfs:comment xml:lang="ru">Деятельность по подготовке входных данных и выбору сценариев; результат используется при составлении плана эксперимента.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Подготовка данных и выбор сценариев</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#scenarioId">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">идентификатор строки сценария</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#Scenario"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#definesCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ClassificationRule"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#LinkCategory"/>
+    <rdfs:label xml:lang="ru">определяет</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b26">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#ceStrong"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#hasScenarioParameter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#Scenario"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#ScenarioParameter"/>
+    <rdfs:label xml:lang="ru">задаёт значения параметра</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ScenarioEffectVisualization">
+    <rdfs:comment xml:lang="ru">Представление уже полученных оценок эффектов для заданного сценарного контекста; не дополнительный интервенционный расчёт.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Визуализация оценки эффектов сценария</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#DirectedEffect">
+    <rdfs:comment xml:lang="ru">Результат оценивания нормированного CE для записи оценки. Числовое значение — numericValue; ce у InfluenceAssessment является компактным представлением того же числа.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Нормированный показатель направленного эффекта CE</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="Nf42a4143148d4d2684a705edc8738146"/>
+    <owl:disjointWith rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#weightsEdge">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#DirectedEffect"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#MapEdge"/>
+    <rdfs:label xml:lang="ru">задаёт знак и вес</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#tauST">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">порог отбора ST</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ceLow">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">граница слабого эффекта</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ClassificationRule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#outputUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">единица измерения показателя</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b52">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#experiment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#limitValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#NormativeValue"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:label xml:lang="ru">числовое предельное значение</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#normalization"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b50">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#ce"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="ru">Онтология аналитического контура KM Energy</rdfs:label>
+    <rdfs:comment xml:lang="ru">Формализация всех 34 понятий и 55 отношений согласованной концептуальной карты rev02. Вычислительное ядро дополнено контекстом моделирования, процедурами анализа и графическим представлением. Область статьи — связи X→Y; отдельный промежуточный слой Z и интервенционные эксперименты здесь не вводятся. Использование IRI не означает завершения регистрации перенаправлений w3id. Онтология не интегрирована в расчётный сервис.</rdfs:comment>
+    <owl:versionInfo>0.2.0; 2026-09-15; CXL rev02 alignment</owl:versionInfo>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ScenarioParameter">
+    <rdfs:comment xml:lang="ru">Определение входного сценарного параметра; может быть представлено аналитическим фактором. Значение параметра в сценарии и его роль в анализе различаются.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Сценарный / варьируемый параметр</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b74">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#ClassificationRule"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b75"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#plansScenario">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ExperimentPlan"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#Scenario"/>
+    <rdfs:label xml:lang="ru">задаёт</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7cf1952f8a2642129a858995b62f4cbf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="N37b4a64d1861413991c2a28b7f104b5c"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#computesST">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#SensitivityAnalysis"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#SensitivityIndex"/>
+    <rdfs:label xml:lang="ru">вычисляет</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#reportMap">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">использует карту</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#AnalyticalReport"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#graphSpecification">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">описание допущенного графа</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#CognitiveMap">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Каузально-когнитивная карта</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b35"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b36"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b37"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b38"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b39"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#mapExperiment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">карта относится к эксперименту</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#Experiment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#inMap">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">ребро принадлежит карте</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#MapEdge"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#hasScenario">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">содержит сценарий</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#Dataset"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#Scenario"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b44">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#softwareVersion"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#sensitivity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">имеет спецификацию оценивания чувствительности</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ce">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">нормированная оценка направленного эффекта</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:comment xml:lang="ru">Компактное числовое значение CE. При явном ceResult должно совпадать с ceResult/numericValue; проверяется SHACL.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#FixedParameter">
+    <rdfs:comment xml:lang="ru">Определение параметра, фиксированного в рассматриваемой постановке модели/эксперимента; не объявляется аналитическим фактором этого анализа.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Фиксированный параметр модели</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b27">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#usesModel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#weight">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">вес ребра</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#MapEdge"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b60">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#sensitivity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#parameterizesModel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ScenarioParameter"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#OptimizationModel"/>
+    <rdfs:label xml:lang="ru">параметризует</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b72">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b73"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#plansExperiment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ExperimentPlan"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#Experiment"/>
+    <rdfs:label xml:lang="ru">определяет</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#optimizesVariable">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#OptimizationModel"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#DecisionVariable"/>
+    <rdfs:label xml:lang="ru">определяет оптимальные значения</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#indicatorNodeMap">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#IndicatorNode"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdfs:label xml:lang="ru">узел показателя принадлежит карте</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#edgeCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#MapEdge"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#LinkCategory"/>
+    <rdfs:label xml:lang="ru">отнесено к категории</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#st">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">опубликованная либо рассчитанная оценка ST</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:comment xml:lang="ru">Компактное числовое значение ST. При явном stResult должно совпадать с stResult/numericValue; проверяется SHACL.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#STMatrix">
+    <rdfs:comment xml:lang="ru">Табличное представление результатов ST, индексированных фактором и показателем в контексте эксперимента; не исходный массив Dxy.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Матрица ST</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#beta"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#Background">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/km-energy/ontology#LinkCategory"/>
+    <rdfs:label xml:lang="ru">Фоновые</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#ce"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b42">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#treatmentValue"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#target">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">целевой показатель ребра</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#MapEdge"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#OutputIndicator"/>
+    <rdfs:comment xml:lang="ru">Компактная ссылка ребра на сам показатель. При явном targetNode должна совпадать с targetNode/representsIndicator; проверяется SHACL.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#sigmaY">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">масштаб показателя</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#NormalizationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#hasConstraint">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#OptimizationModel"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#ModelConstraint"/>
+    <rdfs:label xml:lang="ru">включает ограничение</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b39">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#selectionOperator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#category">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">отнесена к категории</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#LinkCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#adjustmentSet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">набор корректировки, включая явный пустой</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#DecisionVariable">
+    <rdfs:comment xml:lang="ru">Величина, оптимальные значения которой определяет оптимизационная модель. Не является скрытым промежуточным слоем Z каузальной карты статьи.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Переменные решения</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#Dataset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Набор данных для анализа Dxy</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b16"/>
+    <rdfs:comment xml:lang="ru">Исходные сценарные значения X и Y. Оценка использует этот набор; агрегированные ST и CE не являются строками исходного Dxy.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#computesCE">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#EffectEstimation"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#DirectedEffect"/>
+    <rdfs:label xml:lang="ru">вычисляет</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#sourceNode">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#MapEdge"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#FactorNode"/>
+    <rdfs:label xml:lang="ru">имеет исходный узел</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#effectNormalization">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#EffectEstimation"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#NormalizationSpecification"/>
+    <rdfs:label xml:lang="ru">использует описание нормирования</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#Scenario">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Сценарий</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b14"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b15"/>
+    <rdfs:comment xml:lang="ru">Сценарий задаёт значения параметров для отдельного расчёта. hasScenarioParameter указывает определение параметра; числовые назначения содержатся в строке Dxy, идентифицируемой scenarioId.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b23">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#stLow"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b59">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#st"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#basedOn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">представляет оценку</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#MapEdge"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#factorRange">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#AnalyticalFactor"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#UncertaintyRange"/>
+    <rdfs:label xml:lang="ru">имеет диапазон</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b78">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#AnalyticalReport"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#IndicatorNode">
+    <rdfs:comment xml:lang="ru">Графическое представление выходного показателя в конкретной карте; узел и показатель различаются.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Узел показателя</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="Na384c694134a4066bccd20562df57699"/>
+    <rdfs:subClassOf rdf:nodeID="Nf646bf3abfab42c4857d1e9ae55accbb"/>
+    <owl:disjointWith rdf:resource="https://w3id.org/km-energy/ontology#OutputIndicator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#reportSupportsDecision">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#AnalyticalReport"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#ManagementDecision"/>
+    <rdfs:label xml:lang="ru">используется при обосновании</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#EstimationSpecification">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Спецификация оценивания</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b40"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b41"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b42"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b43"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b44"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b45"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b46"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b47"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b48"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b49"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b61">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#estimation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#rangeExperiment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#UncertaintyRange"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#Experiment"/>
+    <rdfs:label xml:lang="ru">диапазон задан для эксперимента</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#evidenceNote">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">происхождение значений</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#characterizesContribution">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#SensitivityIndex"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#UncertaintyContribution"/>
+    <rdfs:label xml:lang="ru">характеризует</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#dataset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">использует данные</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#Dataset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#experiment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">оценка относится к эксперименту</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#Experiment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#indicator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">имеет показатель</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#OutputIndicator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#selectionOperator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">оператор порогового отбора</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#UncertaintyRange">
+    <rdfs:comment xml:lang="ru">Описание области варьирования для данной постановки эксперимента. Разные диапазоны одного фактора представляются отдельными объектами с rangeExperiment.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Диапазон неопределённости</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#MapEdge">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Ребро графа</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b17"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b18"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b19"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b20"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b21"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#reportAssessment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">отчёт включает оценку</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#AnalyticalReport"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#factorUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">единица измерения фактора</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#treatmentValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">верхний или изменённый уровень</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#usesSTMatrix">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ClassificationRule"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#STMatrix"/>
+    <rdfs:label xml:lang="ru">использует</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#estimation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#averagingPopulation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">фоновые сценарии и способ усреднения</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#FactorNode">
+    <rdfs:comment xml:lang="ru">Графическое представление фактора в конкретной карте; узел и сам аналитический фактор различаются.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Узел фактора</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="N7fe4cd22297e4607b2e5f82584759c26"/>
+    <rdfs:subClassOf rdf:nodeID="Nfba6091b44d9434ebc4a7fbdb5eb1e1e"/>
+    <owl:disjointWith rdf:resource="https://w3id.org/km-energy/ontology#AnalyticalFactor"/>
+    <owl:disjointWith rdf:resource="https://w3id.org/km-energy/ontology#IndicatorNode"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#constrainsVariable">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ModelConstraint"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#DecisionVariable"/>
+    <rdfs:label xml:lang="ru">задаётся через</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b58">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#normalization"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#candidateAssessment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">включает оценку в область построения</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#OptimizationModel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Оптимизационная модель</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b54">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#hasFixedParameter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#OptimizationModel"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#FixedParameter"/>
+    <rdfs:label xml:lang="ru">включает</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b15">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#scenarioId"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#sensitivity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#normalization">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">имеет спецификацию нормирования</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#NormalizationSpecification"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#visualizationSupportsDecision">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ScenarioEffectVisualization"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#ManagementDecision"/>
+    <rdfs:label xml:lang="ru">используется при обосновании</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na384c694134a4066bccd20562df57699">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#representsIndicator"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#factor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">имеет фактор</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#AnalyticalFactor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#SensitivityAnalysis">
+    <rdfs:comment xml:lang="ru">Процедура глобального анализа чувствительности. Её описание и настройки задаются отдельно в EstimationSpecification; наличие класса не означает выполнение вычисления средствами OWL.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Глобальный анализ чувствительности</rdfs:label>
+    <owl:disjointWith rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b47">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#method"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#SensitivityIndex">
+    <rdfs:comment xml:lang="ru">Результат расчёта индекса ST для записи оценки. Числовое значение — numericValue; st у InfluenceAssessment является компактным представлением того же числа.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Индекс полной чувствительности ST</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="N8a42c5f78cc64aad85d477a2f71ee517"/>
+    <owl:disjointWith rdf:resource="https://w3id.org/km-energy/ontology#DirectedEffect"/>
+    <owl:disjointWith rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#usesCEMatrix">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ClassificationRule"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#CEMatrix"/>
+    <rdfs:label xml:lang="ru">использует</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ExperimentPlan">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">План вычислительного эксперимента</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#scenarioExperiment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">сценарий относится к эксперименту</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#Scenario"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#Experiment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#hasIndicator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">включает показатель</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#Experiment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#OutputIndicator"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b45">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#analysisSettings"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b30">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#normalizationNote"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ceResult">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#DirectedEffect"/>
+    <rdfs:label xml:lang="ru">имеет результат CE</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#usesModel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">использует модель</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#Experiment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#OptimizationModel"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b55">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#rule"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#sourceLocator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">место в источнике</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#st"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b25">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#stHigh"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b64">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+    <owl:members rdf:nodeID="n499cb77f6ced4686b04c604702771a90b65"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#artifactReference">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">ссылка на исходные данные</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#Dataset"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#referenceRows">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">идентификаторы строк базы нормирования</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#NormalizationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#tauCE">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">порог отбора модуля CE</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ruleVersion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">версия классификационного правила</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ClassificationRule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b20">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#basedOn"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#analyzedBySensitivity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#SensitivityAnalysis"/>
+    <rdfs:label xml:lang="ru">анализируется с помощью</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#hasVisualization">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#ScenarioEffectVisualization"/>
+    <rdfs:label xml:lang="ru">формирует</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#weight"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b32">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#formula"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#specifiesLimit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ScenarioParameter"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#NormativeValue"/>
+    <rdfs:label xml:lang="ru">задаёт</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b10">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#ce"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b46">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#controlValue"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#hasObjective">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#OptimizationModel"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#ObjectiveFunction"/>
+    <rdfs:label xml:lang="ru">имеет</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b62">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#beta"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#usedInEstimation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#FactorVariation"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#EffectEstimation"/>
+    <rdfs:label xml:lang="ru">используется при оценивании</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b37">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#mapRule"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">оценка эффекта контраста</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b18">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#target"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b41">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#graphSpecification"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#source">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">исходный фактор ребра</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#MapEdge"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#AnalyticalFactor"/>
+    <rdfs:comment xml:lang="ru">Компактная ссылка ребра на сам фактор. При явном sourceNode должна совпадать с sourceNode/representsFactor; проверяется SHACL.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b21">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#source"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#targetNode">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#MapEdge"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#IndicatorNode"/>
+    <rdfs:label xml:lang="ru">имеет целевой узел</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b81">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#StrongLowST"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b82"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#status">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">состояние оценки</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b80">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#Critical"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b81"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf646bf3abfab42c4857d1e9ae55accbb">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#indicatorNodeMap"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b76">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b77"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#producesDataset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#Experiment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#Dataset"/>
+    <rdfs:label xml:lang="ru">формирует</rdfs:label>
+    <owl:inverseOf rdf:resource="https://w3id.org/km-energy/ontology#datasetExperiment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#mapSupportsDecision">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#ManagementDecision"/>
+    <rdfs:label xml:lang="ru">используется при обосновании</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#constraintParameter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ModelConstraint"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#FixedParameter"/>
+    <rdfs:label xml:lang="ru">использует</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b16">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#datasetExperiment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#representedByFactor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ScenarioParameter"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#AnalyticalFactor"/>
+    <rdfs:label xml:lang="ru">представлен фактором</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b34">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#sigmaY"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ceInMatrix">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#DirectedEffect"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#CEMatrix"/>
+    <rdfs:label xml:lang="ru">является элементом</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ReportedAssessment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Оценка из текста статьи</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b10"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b11"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b12"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b13"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#sensitivityDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#SensitivityAnalysis"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+    <rdfs:label xml:lang="ru">имеет описание процедуры ST</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#describedByModel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#EnergySystem"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#OptimizationModel"/>
+    <rdfs:label xml:lang="ru">описывается</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b28">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#scaleA"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#hasFactor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">включает фактор</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#Experiment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#AnalyticalFactor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#parameterRange">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ScenarioParameter"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#UncertaintyRange"/>
+    <rdfs:label xml:lang="ru">имеет диапазон</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b77">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#MapEdge"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b78"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#AnalyticalReport">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Аналитический отчёт</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#LinkCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Категория связи «фактор–показатель»</rdfs:label>
+    <rdfs:comment xml:lang="ru">Категория оценки пары по заданному правилу ST×CE. Категории Critical, Moderate и другие — экземпляры этого класса, а не OWL-классы.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#factorNodeMap">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#FactorNode"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdfs:label xml:lang="ru">узел фактора принадлежит карте</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#NormalizationSpecification">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Спецификация нормирования</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b28"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b29"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b30"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b31"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b32"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b33"/>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b34"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#numericValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:label xml:lang="ru">числовое значение результата ST или CE</rdfs:label>
+    <rdfs:domain rdf:nodeID="N7cf1952f8a2642129a858995b62f4cbf"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7fe4cd22297e4607b2e5f82584759c26">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#representsFactor"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#scaleA">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">коэффициент a</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#NormalizationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#purpose">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">назначение карты</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#formula">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">идентификатор формулы нормирования</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#NormalizationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#contributionSelectsEdge">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#UncertaintyContribution"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#MapEdge"/>
+    <rdfs:label xml:lang="ru">используется для отбора и ранжирования</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#Uncertainty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/km-energy/ontology#LinkCategory"/>
+    <rdfs:label xml:lang="ru">Источники неопределённости</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b67">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#Scenario"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b68"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#Moderate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/km-energy/ontology#LinkCategory"/>
+    <rdfs:label xml:lang="ru">Умеренные</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#FactorVariation">
+    <rdfs:comment xml:lang="ru">Задание рассматриваемого изменения или контраста фактора. Не утверждает проведения отдельного интервенционного эксперимента.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Параметрическое изменение аналитического фактора</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b84">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#Moderate"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b69">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#AnalyticalFactor"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b70"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#datasetExperiment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">набор относится к эксперименту</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#Dataset"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#Experiment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#representsIndicator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#IndicatorNode"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#OutputIndicator"/>
+    <rdfs:label xml:lang="ru">отображает</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#hasFactorNode">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#FactorNode"/>
+    <rdfs:label xml:lang="ru">включает</rdfs:label>
+    <owl:inverseOf rdf:resource="https://w3id.org/km-energy/ontology#factorNodeMap"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#estimation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">имеет спецификацию оценивания</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#parameterizesConstraint">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#AnalyticalFactor"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#ModelConstraint"/>
+    <rdfs:label xml:lang="ru">параметризует</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#stResult">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#SensitivityIndex"/>
+    <rdfs:label xml:lang="ru">имеет результат ST</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#hasIndicatorNode">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#IndicatorNode"/>
+    <rdfs:label xml:lang="ru">включает</rdfs:label>
+    <owl:inverseOf rdf:resource="https://w3id.org/km-energy/ontology#indicatorNodeMap"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#stInMatrix">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#SensitivityIndex"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#STMatrix"/>
+    <rdfs:label xml:lang="ru">является элементом</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#producesIndicator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#OptimizationModel"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#OutputIndicator"/>
+    <rdfs:label xml:lang="ru">формирует</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#representsFactor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#FactorNode"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#AnalyticalFactor"/>
+    <rdfs:label xml:lang="ru">отображает</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#usesRange">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#SensitivityAnalysis"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#UncertaintyRange"/>
+    <rdfs:label xml:lang="ru">использует</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#StrongLowST">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/km-energy/ontology#LinkCategory"/>
+    <rdfs:label xml:lang="ru">Выраженный эффект при малом ST</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ddof">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">поправка при расчёте стандартного отклонения</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#NormalizationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ceStrong">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">граница выраженного эффекта при малом ST</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ClassificationRule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#stMatrixExperiment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#STMatrix"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#Experiment"/>
+    <rdfs:label xml:lang="ru">матрица ST относится к эксперименту</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b49">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#factorUnit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b70">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#OutputIndicator"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b71"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#NormativeValue">
+    <rdfs:comment xml:lang="ru">Предельное или нормативное значение, используемое при задании сценарного параметра или ограничения модели; числовое значение допускается задавать через limitValue.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Нормативное / предельное значение</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b11">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#evidenceNote"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b38">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#tauST"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#metadataStatus">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">полнота метаданных</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#Dataset"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#ate"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b51">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#status"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#beta">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">коэффициент аддитивной линейной регрессии</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b36">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#mapExperiment"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b73">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#NormalizationSpecification"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b74"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ceMatrixExperiment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#CEMatrix"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#Experiment"/>
+    <rdfs:label xml:lang="ru">матрица CE относится к эксперименту</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ManagementDecision">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Управленческое решение</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#Experiment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Вычислительный эксперимент (серия расчётов)</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b27"/>
+    <rdfs:comment xml:lang="ru">Отдельный вычислительный эксперимент: серия параметрических оптимизационных расчётов в заданных условиях и периоде. План задаёт серию; серия формирует Dxy.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b82">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#Uncertainty"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b83"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b63">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#dataset"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf42a4143148d4d2684a705edc8738146">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#numericValue"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#preparesPlan">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ScenarioPreparation"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#ExperimentPlan"/>
+    <rdfs:label xml:lang="ru">формирует</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b40">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#outputUnit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nfba6091b44d9434ebc4a7fbdb5eb1e1e">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#factorNodeMap"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#UncertaintyContribution">
+    <rdfs:comment xml:lang="ru">Интерпретация вклада фактора в неопределённость конкретного результата, характеризуемого ST; используется для отбора и ранжирования связей.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Вклад в неопределённость результата</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b14">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#scenarioExperiment"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b35">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#tauCE"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b48">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#adjustmentSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#mapRule">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">карта использует классификацию</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#CognitiveMap"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#ClassificationRule"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#rule">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="ru">классифицировано по правилу</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#ClassificationRule"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#analysisSettings">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">параметры процедуры анализа</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b75">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#LinkCategory"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b76"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b33">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#ddof"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#appearsInConstraint">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#OutputIndicator"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#ModelConstraint"/>
+    <rdfs:label xml:lang="ru">входит в</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N8a42c5f78cc64aad85d477a2f71ee517">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#numericValue"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b83">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#Background"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b84"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b53">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#ate"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#method">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">идентификатор оценивателя</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b13">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#st"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b31">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#sigmaX"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b68">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#Dataset"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b69"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b66">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#Experiment"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b67"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b22">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#ruleVersion"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b24">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#ceLow"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#estimationDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#EffectEstimation"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+    <rdfs:label xml:lang="ru">имеет описание процедуры CE</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#sigmaX">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">масштаб фактора</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#NormalizationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ModelConstraint">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Ограничение оптимизационной модели</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#AnalyticalFactor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Аналитический фактор</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b56">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#indicator"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b57">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#factor"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b29">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#referenceRows"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#Critical">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/km-energy/ontology#LinkCategory"/>
+    <rdfs:label xml:lang="ru">Критические</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b12">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#sourceLocator"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N37b4a64d1861413991c2a28b7f104b5c">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#SensitivityIndex"/>
+    <rdf:rest rdf:nodeID="Nc874c588d1eb4f379955fc2462f13ee1"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b65">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#OptimizationModel"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b66"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#refinesPreparation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#ManagementDecision"/>
+    <rdfs:range rdf:resource="https://w3id.org/km-energy/ontology#ScenarioPreparation"/>
+    <rdfs:label xml:lang="ru">уточняет</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#EffectEstimation">
+    <rdfs:comment xml:lang="ru">Процедура оценивания модельно-имплицированного эффекта. Описание оценивателя и нормирования хранится отдельно. Причинная интерпретация зависит от допущений расчётного метода.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Оценивание модельно- имплицированного направленного эффекта</rdfs:label>
+    <owl:disjointWith rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#softwareVersion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="ru">версия программного средства</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#EstimationSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#rule"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b17">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#inMap"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b43">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/km-energy/ontology#averagingPopulation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b79">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+    <owl:distinctMembers rdf:nodeID="n499cb77f6ced4686b04c604702771a90b80"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#CEMatrix">
+    <rdfs:comment xml:lang="ru">Табличное представление результатов CE, индексированных фактором и показателем в контексте эксперимента; не исходный массив Dxy.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Матрица CE</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nc874c588d1eb4f379955fc2462f13ee1">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#DirectedEffect"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ObjectiveFunction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Целевая функция / критерий оптимизации</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#EnergySystem">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Энергетическая система</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#OutputIndicator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="ru">Выходной показатель</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n499cb77f6ced4686b04c604702771a90b71">
+    <rdf:first rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
+    <rdf:rest rdf:nodeID="n499cb77f6ced4686b04c604702771a90b72"/>
+  </rdf:Description>
+</rdf:RDF>

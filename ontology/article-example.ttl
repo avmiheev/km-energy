@@ -1,0 +1,75 @@
+@prefix a: <https://w3id.org/km-energy/ontology#> .
+@prefix ex: <https://w3id.org/km-energy/example#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# This is a transcription of five rounded pairs, not new estimation or a full map.
+ex:italyModel a a:OptimizationModel; rdfs:label "Оптимизационная модель энергосистемы Италии из статьи"@ru .
+ex:italyExperiment a a:Experiment; a:usesModel ex:italyModel;
+  rdfs:label "Вычислительный эксперимент статьи, январь 2013 года"@ru;
+  a:hasFactor ex:marketPrice, ex:carbonTax, ex:budget, ex:windSouth;
+  a:hasIndicator ex:revenue, ex:profit, ex:budgetUse, ex:windCapacity;
+  rdfs:comment "Указана только часть факторов и показателей для демонстрации запросов."@ru .
+ex:scenarioDataset a a:Dataset; a:datasetExperiment ex:italyExperiment;
+  a:metadataStatus "reference_only";
+  a:artifactReference "Козлов_Михеев_rev01.docx, описание DXY; исходный массив сценариев не приложен";
+  rdfs:comment "Ресурс обозначает набор сценариев, описанный в статье. Его строки не загружены в RDF; это не RDF-файл с пятью агрегированными оценками."@ru .
+ex:marketPrice a a:AnalyticalFactor; rdfs:label "Рыночная цена"@ru .
+ex:carbonTax a a:AnalyticalFactor; rdfs:label "Налог на CO₂"@ru .
+ex:budget a a:AnalyticalFactor; rdfs:label "Инвестиционный бюджет"@ru .
+ex:windSouth a a:AnalyticalFactor; rdfs:label "Ресурс ветра (юг)"@ru .
+ex:revenue a a:OutputIndicator; rdfs:label "Выручка"@ru .
+ex:profit a a:OutputIndicator; rdfs:label "Прибыль"@ru .
+ex:budgetUse a a:OutputIndicator; rdfs:label "Использование бюджета"@ru .
+ex:windCapacity a a:OutputIndicator; rdfs:label "Новые мощности ВЭС"@ru .
+
+ex:table1Rule a a:ClassificationRule;
+ a:ruleVersion "table1-rev01-neutral-labels-v1";
+ a:stLow 0.4; a:stHigh 0.7; a:ceLow 0.3; a:ceStrong 0.4;
+ rdfs:comment "Числовые области таблицы 1; применён модуль CE. Название Надёжные заменено нейтральным обозначением без утверждения статистической устойчивости."@ru .
+
+ex:priceRevenue a a:InfluenceAssessment, a:ReportedAssessment;
+ a:experiment ex:italyExperiment; a:dataset ex:scenarioDataset;
+ a:factor ex:marketPrice; a:indicator ex:revenue; a:st 0.91; a:ce 0.78;
+ a:rule ex:table1Rule; a:category a:Critical; a:status "reported";
+ a:sourceLocator "Козлов_Михеев_rev01.docx, раздел 3.3, перечень критических связей, Рыночная цена — Выручка";
+ a:evidenceNote "Округлённые значения переписаны из статьи; ATE, нормировка, контраст и версия опубликованного расчёта не восстановлены." .
+ex:priceProfit a a:InfluenceAssessment, a:ReportedAssessment;
+ a:experiment ex:italyExperiment; a:dataset ex:scenarioDataset;
+ a:factor ex:marketPrice; a:indicator ex:profit; a:st 0.52; a:ce 0.51;
+ a:rule ex:table1Rule; a:category a:Moderate; a:status "reported";
+ a:sourceLocator "Козлов_Михеев_rev01.docx, раздел 3.3, перечень умеренных связей, Рыночная цена — Прибыль";
+ a:evidenceNote "Округлённые значения переписаны из статьи; ATE, нормировка, контраст и версия опубликованного расчёта не восстановлены." .
+ex:taxProfit a a:InfluenceAssessment, a:ReportedAssessment;
+ a:experiment ex:italyExperiment; a:dataset ex:scenarioDataset;
+ a:factor ex:carbonTax; a:indicator ex:profit; a:st 0.41; a:ce -0.44;
+ a:rule ex:table1Rule; a:category a:Moderate; a:status "reported";
+ a:sourceLocator "Козлов_Михеев_rev01.docx, раздел 3.3, перечень умеренных связей, Налог на CO₂ — Прибыль";
+ a:evidenceNote "Округлённые значения переписаны из статьи; ATE, нормировка, контраст и версия опубликованного расчёта не восстановлены." .
+ex:budgetUseEffect a a:InfluenceAssessment, a:ReportedAssessment;
+ a:experiment ex:italyExperiment; a:dataset ex:scenarioDataset;
+ a:factor ex:budget; a:indicator ex:budgetUse; a:st 1.00; a:ce -0.52;
+ a:rule ex:table1Rule; a:category a:Critical; a:status "reported";
+ a:sourceLocator "Козлов_Михеев_rev01.docx, раздел 3.3, перечень критических связей, Инвестиционный бюджет — Использование бюджета";
+ a:evidenceNote "Округлённые значения переписаны из статьи; значение ST=1 не объявляется исходной нескорректированной оценкой." .
+ex:windCapacityEffect a a:InfluenceAssessment, a:ReportedAssessment;
+ a:experiment ex:italyExperiment; a:dataset ex:scenarioDataset;
+ a:factor ex:windSouth; a:indicator ex:windCapacity; a:st 1.00; a:ce 0.06;
+ a:rule ex:table1Rule; a:category a:Uncertainty; a:status "reported";
+ a:sourceLocator "Козлов_Михеев_rev01.docx, раздел 3.3, источники неопределённости, Ресурс ветра (юг) — Новые мощности ВЭС";
+ a:evidenceNote "Округлённые значения переписаны из статьи; значение ST=1 не объявляется исходной нескорректированной оценкой." .
+
+# Thresholds below are illustrative, not recovered settings of article figure 4.
+ex:demoMap a a:CognitiveMap; a:mapExperiment ex:italyExperiment;
+ a:candidateAssessment ex:priceRevenue, ex:priceProfit, ex:taxProfit, ex:budgetUseEffect, ex:windCapacityEffect;
+ a:mapRule ex:table1Rule; a:tauST 0.4; a:tauCE 0.3; a:selectionOperator ">";
+ a:purpose "Демонстрационная проекция пяти опубликованных пар; не реконструкция рисунка 4" .
+ex:edge1 a a:MapEdge; a:inMap ex:demoMap; a:basedOn ex:priceRevenue; a:source ex:marketPrice; a:target ex:revenue; a:weight 0.78 .
+ex:edge2 a a:MapEdge; a:inMap ex:demoMap; a:basedOn ex:priceProfit; a:source ex:marketPrice; a:target ex:profit; a:weight 0.51 .
+ex:edge3 a a:MapEdge; a:inMap ex:demoMap; a:basedOn ex:taxProfit; a:source ex:carbonTax; a:target ex:profit; a:weight -0.44 .
+ex:edge4 a a:MapEdge; a:inMap ex:demoMap; a:basedOn ex:budgetUseEffect; a:source ex:budget; a:target ex:budgetUse; a:weight -0.52 .
+ex:demoReport a a:AnalyticalReport; a:reportMap ex:demoMap;
+ a:reportAssessment ex:priceRevenue, ex:priceProfit, ex:taxProfit, ex:budgetUseEffect, ex:windCapacityEffect;
+ rdfs:comment "Отчёт может включать и оценки, не прошедшие фильтр рёбер."@ru .
+

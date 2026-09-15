@@ -1,0 +1,1006 @@
+@prefix a: <https://w3id.org/km-energy/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/km-energy/ontology> a owl:Ontology ;
+    rdfs:label "Онтология аналитического контура KM Energy"@ru ;
+    rdfs:comment "Формализация всех 34 понятий и 55 отношений согласованной концептуальной карты rev02. Вычислительное ядро дополнено контекстом моделирования, процедурами анализа и графическим представлением. Область статьи — связи X→Y; отдельный промежуточный слой Z и интервенционные эксперименты здесь не вводятся. Использование IRI не означает завершения регистрации перенаправлений w3id. Онтология не интегрирована в расчётный сервис."@ru ;
+    owl:versionInfo "0.2.0; 2026-09-15; CXL rev02 alignment" .
+
+a:CompleteAssessment a owl:Class ;
+    rdfs:label "Оценка с заполненным паспортом"@ru ;
+    rdfs:comment "Технический профиль записи для указанного в приложении линейного оценивателя: обязательные метаданные и результаты. Полнота полей не доказывает научную корректность или воспроизводимость. Не дополнительный блок рисунка 1."@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:sensitivity ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:st ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:estimation ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:ce ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:rule ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:ate ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:category ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:normalization ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:beta ],
+        a:InfluenceAssessment .
+
+a:ReportedAssessment a owl:Class ;
+    rdfs:label "Оценка из текста статьи"@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:ce ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:evidenceNote ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:sourceLocator ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:st ],
+        a:InfluenceAssessment .
+
+a:analyzedBySensitivity a owl:ObjectProperty ;
+    rdfs:label "анализируется с помощью"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range a:SensitivityAnalysis .
+
+a:appearsInConstraint a owl:ObjectProperty ;
+    rdfs:label "входит в"@ru ;
+    rdfs:domain a:OutputIndicator ;
+    rdfs:range a:ModelConstraint .
+
+a:artifactReference a owl:DatatypeProperty ;
+    rdfs:label "ссылка на исходные данные"@ru ;
+    rdfs:domain a:Dataset ;
+    rdfs:range xsd:string .
+
+a:candidateAssessment a owl:ObjectProperty ;
+    rdfs:label "включает оценку в область построения"@ru ;
+    rdfs:domain a:CognitiveMap ;
+    rdfs:range a:InfluenceAssessment .
+
+a:ceInMatrix a owl:ObjectProperty ;
+    rdfs:label "является элементом"@ru ;
+    rdfs:domain a:DirectedEffect ;
+    rdfs:range a:CEMatrix .
+
+a:ceMatrixExperiment a owl:ObjectProperty ;
+    rdfs:label "матрица CE относится к эксперименту"@ru ;
+    rdfs:domain a:CEMatrix ;
+    rdfs:range a:Experiment .
+
+a:ceResult a owl:ObjectProperty ;
+    rdfs:label "имеет результат CE"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range a:DirectedEffect .
+
+a:characterizesContribution a owl:ObjectProperty ;
+    rdfs:label "характеризует"@ru ;
+    rdfs:domain a:SensitivityIndex ;
+    rdfs:range a:UncertaintyContribution .
+
+a:computesCE a owl:ObjectProperty ;
+    rdfs:label "вычисляет"@ru ;
+    rdfs:domain a:EffectEstimation ;
+    rdfs:range a:DirectedEffect .
+
+a:computesST a owl:ObjectProperty ;
+    rdfs:label "вычисляет"@ru ;
+    rdfs:domain a:SensitivityAnalysis ;
+    rdfs:range a:SensitivityIndex .
+
+a:constrainsVariable a owl:ObjectProperty ;
+    rdfs:label "задаётся через"@ru ;
+    rdfs:domain a:ModelConstraint ;
+    rdfs:range a:DecisionVariable .
+
+a:constraintLimit a owl:ObjectProperty ;
+    rdfs:label "использует"@ru ;
+    rdfs:domain a:ModelConstraint ;
+    rdfs:range a:NormativeValue .
+
+a:constraintParameter a owl:ObjectProperty ;
+    rdfs:label "использует"@ru ;
+    rdfs:domain a:ModelConstraint ;
+    rdfs:range a:FixedParameter .
+
+a:contributionSelectsEdge a owl:ObjectProperty ;
+    rdfs:label "используется для отбора и ранжирования"@ru ;
+    rdfs:domain a:UncertaintyContribution ;
+    rdfs:range a:MapEdge .
+
+a:definesCategory a owl:ObjectProperty ;
+    rdfs:label "определяет"@ru ;
+    rdfs:domain a:ClassificationRule ;
+    rdfs:range a:LinkCategory .
+
+a:describedByModel a owl:ObjectProperty ;
+    rdfs:label "описывается"@ru ;
+    rdfs:domain a:EnergySystem ;
+    rdfs:range a:OptimizationModel .
+
+a:edgeCategory a owl:ObjectProperty ;
+    rdfs:label "отнесено к категории"@ru ;
+    rdfs:domain a:MapEdge ;
+    rdfs:range a:LinkCategory .
+
+a:effectNormalization a owl:ObjectProperty ;
+    rdfs:label "использует описание нормирования"@ru ;
+    rdfs:domain a:EffectEstimation ;
+    rdfs:range a:NormalizationSpecification .
+
+a:estimationDescription a owl:ObjectProperty ;
+    rdfs:label "имеет описание процедуры CE"@ru ;
+    rdfs:domain a:EffectEstimation ;
+    rdfs:range a:EstimationSpecification .
+
+a:factorRange a owl:ObjectProperty ;
+    rdfs:label "имеет диапазон"@ru ;
+    rdfs:domain a:AnalyticalFactor ;
+    rdfs:range a:UncertaintyRange .
+
+a:factorVariation a owl:ObjectProperty ;
+    rdfs:label "рассматривает изменение"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range a:FactorVariation .
+
+a:hasConstraint a owl:ObjectProperty ;
+    rdfs:label "включает ограничение"@ru ;
+    rdfs:domain a:OptimizationModel ;
+    rdfs:range a:ModelConstraint .
+
+a:hasEdge a owl:ObjectProperty ;
+    rdfs:label "включает"@ru ;
+    rdfs:domain a:CognitiveMap ;
+    rdfs:range a:MapEdge ;
+    owl:inverseOf a:inMap .
+
+a:hasFactor a owl:ObjectProperty ;
+    rdfs:label "включает фактор"@ru ;
+    rdfs:domain a:Experiment ;
+    rdfs:range a:AnalyticalFactor .
+
+a:hasFactorNode a owl:ObjectProperty ;
+    rdfs:label "включает"@ru ;
+    rdfs:domain a:CognitiveMap ;
+    rdfs:range a:FactorNode ;
+    owl:inverseOf a:factorNodeMap .
+
+a:hasFixedParameter a owl:ObjectProperty ;
+    rdfs:label "включает"@ru ;
+    rdfs:domain a:OptimizationModel ;
+    rdfs:range a:FixedParameter .
+
+a:hasIndicator a owl:ObjectProperty ;
+    rdfs:label "включает показатель"@ru ;
+    rdfs:domain a:Experiment ;
+    rdfs:range a:OutputIndicator .
+
+a:hasIndicatorNode a owl:ObjectProperty ;
+    rdfs:label "включает"@ru ;
+    rdfs:domain a:CognitiveMap ;
+    rdfs:range a:IndicatorNode ;
+    owl:inverseOf a:indicatorNodeMap .
+
+a:hasObjective a owl:ObjectProperty ;
+    rdfs:label "имеет"@ru ;
+    rdfs:domain a:OptimizationModel ;
+    rdfs:range a:ObjectiveFunction .
+
+a:hasScenario a owl:ObjectProperty ;
+    rdfs:label "содержит сценарий"@ru ;
+    rdfs:domain a:Dataset ;
+    rdfs:range a:Scenario .
+
+a:hasScenarioParameter a owl:ObjectProperty ;
+    rdfs:label "задаёт значения параметра"@ru ;
+    rdfs:domain a:Scenario ;
+    rdfs:range a:ScenarioParameter .
+
+a:hasVisualization a owl:ObjectProperty ;
+    rdfs:label "формирует"@ru ;
+    rdfs:domain a:CognitiveMap ;
+    rdfs:range a:ScenarioEffectVisualization .
+
+a:limitValue a owl:DatatypeProperty ;
+    rdfs:label "числовое предельное значение"@ru ;
+    rdfs:domain a:NormativeValue ;
+    rdfs:range xsd:decimal .
+
+a:mapSupportsDecision a owl:ObjectProperty ;
+    rdfs:label "используется при обосновании"@ru ;
+    rdfs:domain a:CognitiveMap ;
+    rdfs:range a:ManagementDecision .
+
+a:metadataStatus a owl:DatatypeProperty ;
+    rdfs:label "полнота метаданных"@ru ;
+    rdfs:domain a:Dataset ;
+    rdfs:range xsd:string .
+
+a:optimizesVariable a owl:ObjectProperty ;
+    rdfs:label "определяет оптимальные значения"@ru ;
+    rdfs:domain a:OptimizationModel ;
+    rdfs:range a:DecisionVariable .
+
+a:parameterRange a owl:ObjectProperty ;
+    rdfs:label "имеет диапазон"@ru ;
+    rdfs:domain a:ScenarioParameter ;
+    rdfs:range a:UncertaintyRange .
+
+a:parameterizesConstraint a owl:ObjectProperty ;
+    rdfs:label "параметризует"@ru ;
+    rdfs:domain a:AnalyticalFactor ;
+    rdfs:range a:ModelConstraint .
+
+a:parameterizesModel a owl:ObjectProperty ;
+    rdfs:label "параметризует"@ru ;
+    rdfs:domain a:ScenarioParameter ;
+    rdfs:range a:OptimizationModel .
+
+a:plansExperiment a owl:ObjectProperty ;
+    rdfs:label "определяет"@ru ;
+    rdfs:domain a:ExperimentPlan ;
+    rdfs:range a:Experiment .
+
+a:plansScenario a owl:ObjectProperty ;
+    rdfs:label "задаёт"@ru ;
+    rdfs:domain a:ExperimentPlan ;
+    rdfs:range a:Scenario .
+
+a:preparesPlan a owl:ObjectProperty ;
+    rdfs:label "формирует"@ru ;
+    rdfs:domain a:ScenarioPreparation ;
+    rdfs:range a:ExperimentPlan .
+
+a:producesDataset a owl:ObjectProperty ;
+    rdfs:label "формирует"@ru ;
+    rdfs:domain a:Experiment ;
+    rdfs:range a:Dataset ;
+    owl:inverseOf a:datasetExperiment .
+
+a:producesIndicator a owl:ObjectProperty ;
+    rdfs:label "формирует"@ru ;
+    rdfs:domain a:OptimizationModel ;
+    rdfs:range a:OutputIndicator .
+
+a:purpose a owl:DatatypeProperty ;
+    rdfs:label "назначение карты"@ru ;
+    rdfs:domain a:CognitiveMap ;
+    rdfs:range xsd:string .
+
+a:rangeExperiment a owl:ObjectProperty ;
+    rdfs:label "диапазон задан для эксперимента"@ru ;
+    rdfs:domain a:UncertaintyRange ;
+    rdfs:range a:Experiment .
+
+a:refinesPreparation a owl:ObjectProperty ;
+    rdfs:label "уточняет"@ru ;
+    rdfs:domain a:ManagementDecision ;
+    rdfs:range a:ScenarioPreparation .
+
+a:reportAssessment a owl:ObjectProperty ;
+    rdfs:label "отчёт включает оценку"@ru ;
+    rdfs:domain a:AnalyticalReport ;
+    rdfs:range a:InfluenceAssessment .
+
+a:reportMap a owl:ObjectProperty ;
+    rdfs:label "использует карту"@ru ;
+    rdfs:domain a:AnalyticalReport ;
+    rdfs:range a:CognitiveMap .
+
+a:reportSupportsDecision a owl:ObjectProperty ;
+    rdfs:label "используется при обосновании"@ru ;
+    rdfs:domain a:AnalyticalReport ;
+    rdfs:range a:ManagementDecision .
+
+a:representedByFactor a owl:ObjectProperty ;
+    rdfs:label "представлен фактором"@ru ;
+    rdfs:domain a:ScenarioParameter ;
+    rdfs:range a:AnalyticalFactor .
+
+a:sensitivityDescription a owl:ObjectProperty ;
+    rdfs:label "имеет описание процедуры ST"@ru ;
+    rdfs:domain a:SensitivityAnalysis ;
+    rdfs:range a:EstimationSpecification .
+
+a:sourceNode a owl:ObjectProperty ;
+    rdfs:label "имеет исходный узел"@ru ;
+    rdfs:domain a:MapEdge ;
+    rdfs:range a:FactorNode .
+
+a:specifiesLimit a owl:ObjectProperty ;
+    rdfs:label "задаёт"@ru ;
+    rdfs:domain a:ScenarioParameter ;
+    rdfs:range a:NormativeValue .
+
+a:stInMatrix a owl:ObjectProperty ;
+    rdfs:label "является элементом"@ru ;
+    rdfs:domain a:SensitivityIndex ;
+    rdfs:range a:STMatrix .
+
+a:stMatrixExperiment a owl:ObjectProperty ;
+    rdfs:label "матрица ST относится к эксперименту"@ru ;
+    rdfs:domain a:STMatrix ;
+    rdfs:range a:Experiment .
+
+a:stResult a owl:ObjectProperty ;
+    rdfs:label "имеет результат ST"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range a:SensitivityIndex .
+
+a:targetNode a owl:ObjectProperty ;
+    rdfs:label "имеет целевой узел"@ru ;
+    rdfs:domain a:MapEdge ;
+    rdfs:range a:IndicatorNode .
+
+a:usedInEstimation a owl:ObjectProperty ;
+    rdfs:label "используется при оценивании"@ru ;
+    rdfs:domain a:FactorVariation ;
+    rdfs:range a:EffectEstimation .
+
+a:usesCEMatrix a owl:ObjectProperty ;
+    rdfs:label "использует"@ru ;
+    rdfs:domain a:ClassificationRule ;
+    rdfs:range a:CEMatrix .
+
+a:usesRange a owl:ObjectProperty ;
+    rdfs:label "использует"@ru ;
+    rdfs:domain a:SensitivityAnalysis ;
+    rdfs:range a:UncertaintyRange .
+
+a:usesSTMatrix a owl:ObjectProperty ;
+    rdfs:label "использует"@ru ;
+    rdfs:domain a:ClassificationRule ;
+    rdfs:range a:STMatrix .
+
+a:visualizationSupportsDecision a owl:ObjectProperty ;
+    rdfs:label "используется при обосновании"@ru ;
+    rdfs:domain a:ScenarioEffectVisualization ;
+    rdfs:range a:ManagementDecision .
+
+a:weightsEdge a owl:ObjectProperty ;
+    rdfs:label "задаёт знак и вес"@ru ;
+    rdfs:domain a:DirectedEffect ;
+    rdfs:range a:MapEdge .
+
+a:Background a owl:NamedIndividual,
+        a:LinkCategory ;
+    rdfs:label "Фоновые"@ru .
+
+a:Critical a owl:NamedIndividual,
+        a:LinkCategory ;
+    rdfs:label "Критические"@ru .
+
+a:EnergySystem a owl:Class ;
+    rdfs:label "Энергетическая система"@ru .
+
+a:Moderate a owl:NamedIndividual,
+        a:LinkCategory ;
+    rdfs:label "Умеренные"@ru .
+
+a:ObjectiveFunction a owl:Class ;
+    rdfs:label "Целевая функция / критерий оптимизации"@ru .
+
+a:StrongLowST a owl:NamedIndividual,
+        a:LinkCategory ;
+    rdfs:label "Выраженный эффект при малом ST"@ru .
+
+a:Uncertainty a owl:NamedIndividual,
+        a:LinkCategory ;
+    rdfs:label "Источники неопределённости"@ru .
+
+a:adjustmentSet a owl:DatatypeProperty ;
+    rdfs:label "набор корректировки, включая явный пустой"@ru ;
+    rdfs:domain a:EstimationSpecification ;
+    rdfs:range xsd:string .
+
+a:analysisSettings a owl:DatatypeProperty ;
+    rdfs:label "параметры процедуры анализа"@ru ;
+    rdfs:domain a:EstimationSpecification ;
+    rdfs:range xsd:string .
+
+a:averagingPopulation a owl:DatatypeProperty ;
+    rdfs:label "фоновые сценарии и способ усреднения"@ru ;
+    rdfs:domain a:EstimationSpecification ;
+    rdfs:range xsd:string .
+
+a:basedOn a owl:ObjectProperty ;
+    rdfs:label "представляет оценку"@ru ;
+    rdfs:domain a:MapEdge ;
+    rdfs:range a:InfluenceAssessment .
+
+a:ceLow a owl:DatatypeProperty ;
+    rdfs:label "граница слабого эффекта"@ru ;
+    rdfs:domain a:ClassificationRule ;
+    rdfs:range xsd:decimal .
+
+a:ceStrong a owl:DatatypeProperty ;
+    rdfs:label "граница выраженного эффекта при малом ST"@ru ;
+    rdfs:domain a:ClassificationRule ;
+    rdfs:range xsd:decimal .
+
+a:controlValue a owl:DatatypeProperty ;
+    rdfs:label "нижний или контрольный уровень"@ru ;
+    rdfs:domain a:EstimationSpecification ;
+    rdfs:range xsd:decimal .
+
+a:dataset a owl:ObjectProperty ;
+    rdfs:label "использует данные"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range a:Dataset .
+
+a:ddof a owl:DatatypeProperty ;
+    rdfs:label "поправка при расчёте стандартного отклонения"@ru ;
+    rdfs:domain a:NormalizationSpecification ;
+    rdfs:range xsd:integer .
+
+a:evidenceNote a owl:DatatypeProperty ;
+    rdfs:label "происхождение значений"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range xsd:string .
+
+a:experiment a owl:ObjectProperty ;
+    rdfs:label "оценка относится к эксперименту"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range a:Experiment .
+
+a:factor a owl:ObjectProperty ;
+    rdfs:label "имеет фактор"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range a:AnalyticalFactor .
+
+a:factorUnit a owl:DatatypeProperty ;
+    rdfs:label "единица измерения фактора"@ru ;
+    rdfs:domain a:EstimationSpecification ;
+    rdfs:range xsd:string .
+
+a:formula a owl:DatatypeProperty ;
+    rdfs:label "идентификатор формулы нормирования"@ru ;
+    rdfs:domain a:NormalizationSpecification ;
+    rdfs:range xsd:string .
+
+a:graphSpecification a owl:DatatypeProperty ;
+    rdfs:label "описание допущенного графа"@ru ;
+    rdfs:domain a:EstimationSpecification ;
+    rdfs:range xsd:string .
+
+a:indicator a owl:ObjectProperty ;
+    rdfs:label "имеет показатель"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range a:OutputIndicator .
+
+a:mapExperiment a owl:ObjectProperty ;
+    rdfs:label "карта относится к эксперименту"@ru ;
+    rdfs:domain a:CognitiveMap ;
+    rdfs:range a:Experiment .
+
+a:mapRule a owl:ObjectProperty ;
+    rdfs:label "карта использует классификацию"@ru ;
+    rdfs:domain a:CognitiveMap ;
+    rdfs:range a:ClassificationRule .
+
+a:method a owl:DatatypeProperty ;
+    rdfs:label "идентификатор оценивателя"@ru ;
+    rdfs:domain a:EstimationSpecification ;
+    rdfs:range xsd:string .
+
+a:normalizationNote a owl:DatatypeProperty ;
+    rdfs:label "описание формулы и базы нормирования"@ru ;
+    rdfs:domain a:NormalizationSpecification ;
+    rdfs:range xsd:string .
+
+a:outputUnit a owl:DatatypeProperty ;
+    rdfs:label "единица измерения показателя"@ru ;
+    rdfs:domain a:EstimationSpecification ;
+    rdfs:range xsd:string .
+
+a:referenceRows a owl:DatatypeProperty ;
+    rdfs:label "идентификаторы строк базы нормирования"@ru ;
+    rdfs:domain a:NormalizationSpecification ;
+    rdfs:range xsd:string .
+
+a:representsFactor a owl:ObjectProperty ;
+    rdfs:label "отображает"@ru ;
+    rdfs:domain a:FactorNode ;
+    rdfs:range a:AnalyticalFactor .
+
+a:representsIndicator a owl:ObjectProperty ;
+    rdfs:label "отображает"@ru ;
+    rdfs:domain a:IndicatorNode ;
+    rdfs:range a:OutputIndicator .
+
+a:ruleVersion a owl:DatatypeProperty ;
+    rdfs:label "версия классификационного правила"@ru ;
+    rdfs:domain a:ClassificationRule ;
+    rdfs:range xsd:string .
+
+a:scaleA a owl:DatatypeProperty ;
+    rdfs:label "коэффициент a"@ru ;
+    rdfs:domain a:NormalizationSpecification ;
+    rdfs:range xsd:decimal .
+
+a:scenarioExperiment a owl:ObjectProperty ;
+    rdfs:label "сценарий относится к эксперименту"@ru ;
+    rdfs:domain a:Scenario ;
+    rdfs:range a:Experiment .
+
+a:scenarioId a owl:DatatypeProperty ;
+    rdfs:label "идентификатор строки сценария"@ru ;
+    rdfs:domain a:Scenario ;
+    rdfs:range xsd:string .
+
+a:selectionOperator a owl:DatatypeProperty ;
+    rdfs:label "оператор порогового отбора"@ru ;
+    rdfs:domain a:CognitiveMap ;
+    rdfs:range xsd:string .
+
+a:sigmaX a owl:DatatypeProperty ;
+    rdfs:label "масштаб фактора"@ru ;
+    rdfs:domain a:NormalizationSpecification ;
+    rdfs:range xsd:decimal .
+
+a:sigmaY a owl:DatatypeProperty ;
+    rdfs:label "масштаб показателя"@ru ;
+    rdfs:domain a:NormalizationSpecification ;
+    rdfs:range xsd:decimal .
+
+a:softwareVersion a owl:DatatypeProperty ;
+    rdfs:label "версия программного средства"@ru ;
+    rdfs:domain a:EstimationSpecification ;
+    rdfs:range xsd:string .
+
+a:source a owl:ObjectProperty ;
+    rdfs:label "исходный фактор ребра"@ru ;
+    rdfs:comment "Компактная ссылка ребра на сам фактор. При явном sourceNode должна совпадать с sourceNode/representsFactor; проверяется SHACL."@ru ;
+    rdfs:domain a:MapEdge ;
+    rdfs:range a:AnalyticalFactor .
+
+a:sourceLocator a owl:DatatypeProperty ;
+    rdfs:label "место в источнике"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range xsd:string .
+
+a:stHigh a owl:DatatypeProperty ;
+    rdfs:label "верхняя граница классификации ST"@ru ;
+    rdfs:domain a:ClassificationRule ;
+    rdfs:range xsd:decimal .
+
+a:stLow a owl:DatatypeProperty ;
+    rdfs:label "нижняя граница классификации ST"@ru ;
+    rdfs:domain a:ClassificationRule ;
+    rdfs:range xsd:decimal .
+
+a:status a owl:DatatypeProperty ;
+    rdfs:label "состояние оценки"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range xsd:string .
+
+a:target a owl:ObjectProperty ;
+    rdfs:label "целевой показатель ребра"@ru ;
+    rdfs:comment "Компактная ссылка ребра на сам показатель. При явном targetNode должна совпадать с targetNode/representsIndicator; проверяется SHACL."@ru ;
+    rdfs:domain a:MapEdge ;
+    rdfs:range a:OutputIndicator .
+
+a:tauCE a owl:DatatypeProperty ;
+    rdfs:label "порог отбора модуля CE"@ru ;
+    rdfs:domain a:CognitiveMap ;
+    rdfs:range xsd:decimal .
+
+a:tauST a owl:DatatypeProperty ;
+    rdfs:label "порог отбора ST"@ru ;
+    rdfs:domain a:CognitiveMap ;
+    rdfs:range xsd:decimal .
+
+a:treatmentValue a owl:DatatypeProperty ;
+    rdfs:label "верхний или изменённый уровень"@ru ;
+    rdfs:domain a:EstimationSpecification ;
+    rdfs:range xsd:decimal .
+
+a:usesModel a owl:ObjectProperty ;
+    rdfs:label "использует модель"@ru ;
+    rdfs:domain a:Experiment ;
+    rdfs:range a:OptimizationModel .
+
+a:weight a owl:DatatypeProperty ;
+    rdfs:label "вес ребра"@ru ;
+    rdfs:domain a:MapEdge ;
+    rdfs:range xsd:decimal .
+
+a:DecisionVariable a owl:Class ;
+    rdfs:label "Переменные решения"@ru ;
+    rdfs:comment "Величина, оптимальные значения которой определяет оптимизационная модель. Не является скрытым промежуточным слоем Z каузальной карты статьи."@ru .
+
+a:FactorVariation a owl:Class ;
+    rdfs:label "Параметрическое изменение аналитического фактора"@ru ;
+    rdfs:comment "Задание рассматриваемого изменения или контраста фактора. Не утверждает проведения отдельного интервенционного эксперимента."@ru .
+
+a:FixedParameter a owl:Class ;
+    rdfs:label "Фиксированный параметр модели"@ru ;
+    rdfs:comment "Определение параметра, фиксированного в рассматриваемой постановке модели/эксперимента; не объявляется аналитическим фактором этого анализа."@ru .
+
+a:ScenarioEffectVisualization a owl:Class ;
+    rdfs:label "Визуализация оценки эффектов сценария"@ru ;
+    rdfs:comment "Представление уже полученных оценок эффектов для заданного сценарного контекста; не дополнительный интервенционный расчёт."@ru .
+
+a:ScenarioPreparation a owl:Class ;
+    rdfs:label "Подготовка данных и выбор сценариев"@ru ;
+    rdfs:comment "Деятельность по подготовке входных данных и выбору сценариев; результат используется при составлении плана эксперимента."@ru .
+
+a:UncertaintyContribution a owl:Class ;
+    rdfs:label "Вклад в неопределённость результата"@ru ;
+    rdfs:comment "Интерпретация вклада фактора в неопределённость конкретного результата, характеризуемого ST; используется для отбора и ранжирования связей."@ru .
+
+a:ate a owl:DatatypeProperty ;
+    rdfs:label "оценка эффекта контраста"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range xsd:decimal .
+
+a:beta a owl:DatatypeProperty ;
+    rdfs:label "коэффициент аддитивной линейной регрессии"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range xsd:decimal .
+
+a:category a owl:ObjectProperty ;
+    rdfs:label "отнесена к категории"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range a:LinkCategory .
+
+a:datasetExperiment a owl:ObjectProperty ;
+    rdfs:label "набор относится к эксперименту"@ru ;
+    rdfs:domain a:Dataset ;
+    rdfs:range a:Experiment .
+
+a:estimation a owl:ObjectProperty ;
+    rdfs:label "имеет спецификацию оценивания"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range a:EstimationSpecification .
+
+a:factorNodeMap a owl:ObjectProperty ;
+    rdfs:label "узел фактора принадлежит карте"@ru ;
+    rdfs:domain a:FactorNode ;
+    rdfs:range a:CognitiveMap .
+
+a:inMap a owl:ObjectProperty ;
+    rdfs:label "ребро принадлежит карте"@ru ;
+    rdfs:domain a:MapEdge ;
+    rdfs:range a:CognitiveMap .
+
+a:indicatorNodeMap a owl:ObjectProperty ;
+    rdfs:label "узел показателя принадлежит карте"@ru ;
+    rdfs:domain a:IndicatorNode ;
+    rdfs:range a:CognitiveMap .
+
+a:normalization a owl:ObjectProperty ;
+    rdfs:label "имеет спецификацию нормирования"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range a:NormalizationSpecification .
+
+a:numericValue a owl:DatatypeProperty ;
+    rdfs:label "числовое значение результата ST или CE"@ru ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( a:SensitivityIndex a:DirectedEffect ) ] ;
+    rdfs:range xsd:decimal .
+
+a:rule a owl:ObjectProperty ;
+    rdfs:label "классифицировано по правилу"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range a:ClassificationRule .
+
+a:sensitivity a owl:ObjectProperty ;
+    rdfs:label "имеет спецификацию оценивания чувствительности"@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range a:EstimationSpecification .
+
+a:CEMatrix a owl:Class ;
+    rdfs:label "Матрица CE"@ru ;
+    rdfs:comment "Табличное представление результатов CE, индексированных фактором и показателем в контексте эксперимента; не исходный массив Dxy."@ru .
+
+a:ExperimentPlan a owl:Class ;
+    rdfs:label "План вычислительного эксперимента"@ru .
+
+a:NormativeValue a owl:Class ;
+    rdfs:label "Нормативное / предельное значение"@ru ;
+    rdfs:comment "Предельное или нормативное значение, используемое при задании сценарного параметра или ограничения модели; числовое значение допускается задавать через limitValue."@ru .
+
+a:STMatrix a owl:Class ;
+    rdfs:label "Матрица ST"@ru ;
+    rdfs:comment "Табличное представление результатов ST, индексированных фактором и показателем в контексте эксперимента; не исходный массив Dxy."@ru .
+
+a:ce a owl:DatatypeProperty ;
+    rdfs:label "нормированная оценка направленного эффекта"@ru ;
+    rdfs:comment "Компактное числовое значение CE. При явном ceResult должно совпадать с ceResult/numericValue; проверяется SHACL."@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range xsd:decimal .
+
+a:st a owl:DatatypeProperty ;
+    rdfs:label "опубликованная либо рассчитанная оценка ST"@ru ;
+    rdfs:comment "Компактное числовое значение ST. При явном stResult должно совпадать с stResult/numericValue; проверяется SHACL."@ru ;
+    rdfs:domain a:InfluenceAssessment ;
+    rdfs:range xsd:decimal .
+
+a:AnalyticalReport a owl:Class ;
+    rdfs:label "Аналитический отчёт"@ru .
+
+a:EffectEstimation a owl:Class ;
+    rdfs:label "Оценивание модельно- имплицированного направленного эффекта"@ru ;
+    rdfs:comment "Процедура оценивания модельно-имплицированного эффекта. Описание оценивателя и нормирования хранится отдельно. Причинная интерпретация зависит от допущений расчётного метода."@ru ;
+    owl:disjointWith a:EstimationSpecification .
+
+a:FactorNode a owl:Class ;
+    rdfs:label "Узел фактора"@ru ;
+    rdfs:comment "Графическое представление фактора в конкретной карте; узел и сам аналитический фактор различаются."@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:representsFactor ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:factorNodeMap ] ;
+    owl:disjointWith a:AnalyticalFactor,
+        a:IndicatorNode .
+
+a:ManagementDecision a owl:Class ;
+    rdfs:label "Управленческое решение"@ru .
+
+a:SensitivityAnalysis a owl:Class ;
+    rdfs:label "Глобальный анализ чувствительности"@ru ;
+    rdfs:comment "Процедура глобального анализа чувствительности. Её описание и настройки задаются отдельно в EstimationSpecification; наличие класса не означает выполнение вычисления средствами OWL."@ru ;
+    owl:disjointWith a:EstimationSpecification .
+
+a:UncertaintyRange a owl:Class ;
+    rdfs:label "Диапазон неопределённости"@ru ;
+    rdfs:comment "Описание области варьирования для данной постановки эксперимента. Разные диапазоны одного фактора представляются отдельными объектами с rangeExperiment."@ru .
+
+a:IndicatorNode a owl:Class ;
+    rdfs:label "Узел показателя"@ru ;
+    rdfs:comment "Графическое представление выходного показателя в конкретной карте; узел и показатель различаются."@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:representsIndicator ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:indicatorNodeMap ] ;
+    owl:disjointWith a:OutputIndicator .
+
+a:ScenarioParameter a owl:Class ;
+    rdfs:label "Сценарный / варьируемый параметр"@ru ;
+    rdfs:comment "Определение входного сценарного параметра; может быть представлено аналитическим фактором. Значение параметра в сценарии и его роль в анализе различаются."@ru .
+
+a:SensitivityIndex a owl:Class ;
+    rdfs:label "Индекс полной чувствительности ST"@ru ;
+    rdfs:comment "Результат расчёта индекса ST для записи оценки. Числовое значение — numericValue; st у InfluenceAssessment является компактным представлением того же числа."@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:numericValue ] ;
+    owl:disjointWith a:DirectedEffect,
+        a:InfluenceAssessment .
+
+a:DirectedEffect a owl:Class ;
+    rdfs:label "Нормированный показатель направленного эффекта CE"@ru ;
+    rdfs:comment "Результат оценивания нормированного CE для записи оценки. Числовое значение — numericValue; ce у InfluenceAssessment является компактным представлением того же числа."@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:numericValue ] ;
+    owl:disjointWith a:InfluenceAssessment .
+
+a:ModelConstraint a owl:Class ;
+    rdfs:label "Ограничение оптимизационной модели"@ru .
+
+a:Scenario a owl:Class ;
+    rdfs:label "Сценарий"@ru ;
+    rdfs:comment "Сценарий задаёт значения параметров для отдельного расчёта. hasScenarioParameter указывает определение параметра; числовые назначения содержатся в строке Dxy, идентифицируемой scenarioId."@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:scenarioExperiment ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:scenarioId ] .
+
+a:Dataset a owl:Class ;
+    rdfs:label "Набор данных для анализа Dxy"@ru ;
+    rdfs:comment "Исходные сценарные значения X и Y. Оценка использует этот набор; агрегированные ST и CE не являются строками исходного Dxy."@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:datasetExperiment ] .
+
+a:OutputIndicator a owl:Class ;
+    rdfs:label "Выходной показатель"@ru .
+
+a:AnalyticalFactor a owl:Class ;
+    rdfs:label "Аналитический фактор"@ru .
+
+a:LinkCategory a owl:Class ;
+    rdfs:label "Категория связи «фактор–показатель»"@ru ;
+    rdfs:comment "Категория оценки пары по заданному правилу ST×CE. Категории Critical, Moderate и другие — экземпляры этого класса, а не OWL-классы."@ru .
+
+a:OptimizationModel a owl:Class ;
+    rdfs:label "Оптимизационная модель"@ru .
+
+a:NormalizationSpecification a owl:Class ;
+    rdfs:label "Спецификация нормирования"@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:scaleA ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:referenceRows ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:normalizationNote ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:sigmaX ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:formula ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:ddof ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:sigmaY ] .
+
+a:ClassificationRule a owl:Class ;
+    rdfs:label "Правило классификации (матрица ST×CE)"@ru ;
+    rdfs:comment "Правило классификации по сочетанию ST и модуля CE, представленное матрицей ST×CE. Категории — экземпляры LinkCategory; пороговый отбор рёбер задаётся отдельно у карты."@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:ruleVersion ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:stLow ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:ceLow ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:stHigh ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:ceStrong ] .
+
+a:MapEdge a owl:Class ;
+    rdfs:label "Ребро графа"@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:inMap ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:target ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:weight ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:basedOn ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:source ] .
+
+a:Experiment a owl:Class ;
+    rdfs:label "Вычислительный эксперимент (серия расчётов)"@ru ;
+    rdfs:comment "Отдельный вычислительный эксперимент: серия параметрических оптимизационных расчётов в заданных условиях и периоде. План задаёт серию; серия формирует Dxy."@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:usesModel ] .
+
+a:CognitiveMap a owl:Class ;
+    rdfs:label "Каузально-когнитивная карта"@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:tauCE ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:mapExperiment ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:mapRule ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:tauST ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:selectionOperator ] .
+
+a:EstimationSpecification a owl:Class ;
+    rdfs:label "Спецификация оценивания"@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:outputUnit ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:graphSpecification ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:treatmentValue ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:averagingPopulation ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:softwareVersion ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:analysisSettings ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:controlValue ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:method ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:adjustmentSet ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:factorUnit ] .
+
+a:InfluenceAssessment a owl:Class ;
+    rdfs:label "Оценка влияния фактора на показатель"@ru ;
+    rdfs:comment "Запись оценки пары фактор–показатель в одном эксперименте и на одном наборе данных; ST и CE относятся к этой записи. Одна и та же пара в январе и июле имеет разные записи оценки."@ru ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:ce ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:status ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:experiment ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:ate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:category ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:rule ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:indicator ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:factor ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:normalization ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:st ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:sensitivity ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:estimation ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:beta ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty a:dataset ] .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( a:OptimizationModel a:Experiment a:Scenario a:Dataset a:AnalyticalFactor a:OutputIndicator a:InfluenceAssessment a:EstimationSpecification a:NormalizationSpecification a:ClassificationRule a:LinkCategory a:CognitiveMap a:MapEdge a:AnalyticalReport ) .
+
+[] a owl:AllDifferent ;
+    owl:distinctMembers ( a:Critical a:StrongLowST a:Uncertainty a:Background a:Moderate ) .
+

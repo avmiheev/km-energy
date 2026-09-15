@@ -1,0 +1,35 @@
+@prefix a: <https://w3id.org/km-energy/ontology#> .
+@prefix ex: <https://w3id.org/km-energy/example#> .
+
+# Load together with article-example.ttl. This is an explicit encoding of the
+# same five rounded values, not new measurements or recovered run metadata.
+ex:priceRevenue a:stResult ex:priceRevenueST; a:ceResult ex:priceRevenueCE.
+ex:priceRevenueST a a:SensitivityIndex; a:numericValue 0.91.
+ex:priceRevenueCE a a:DirectedEffect; a:numericValue 0.78.
+ex:priceProfit a:stResult ex:priceProfitST; a:ceResult ex:priceProfitCE.
+ex:priceProfitST a a:SensitivityIndex; a:numericValue 0.52.
+ex:priceProfitCE a a:DirectedEffect; a:numericValue 0.51.
+ex:taxProfit a:stResult ex:taxProfitST; a:ceResult ex:taxProfitCE.
+ex:taxProfitST a a:SensitivityIndex; a:numericValue 0.41.
+ex:taxProfitCE a a:DirectedEffect; a:numericValue -0.44.
+ex:budgetUseEffect a:stResult ex:budgetUseST; a:ceResult ex:budgetUseCE.
+ex:budgetUseST a a:SensitivityIndex; a:numericValue 1.00.
+ex:budgetUseCE a a:DirectedEffect; a:numericValue -0.52.
+ex:windCapacityEffect a:stResult ex:windCapacityST; a:ceResult ex:windCapacityCE.
+ex:windCapacityST a a:SensitivityIndex; a:numericValue 1.00.
+ex:windCapacityCE a a:DirectedEffect; a:numericValue 0.06.
+
+ex:priceNode a a:FactorNode; a:representsFactor ex:marketPrice; a:factorNodeMap ex:demoMap.
+ex:taxNode a a:FactorNode; a:representsFactor ex:carbonTax; a:factorNodeMap ex:demoMap.
+ex:budgetNode a a:FactorNode; a:representsFactor ex:budget; a:factorNodeMap ex:demoMap.
+ex:revenueNode a a:IndicatorNode; a:representsIndicator ex:revenue; a:indicatorNodeMap ex:demoMap.
+ex:profitNode a a:IndicatorNode; a:representsIndicator ex:profit; a:indicatorNodeMap ex:demoMap.
+ex:budgetUseNode a a:IndicatorNode; a:representsIndicator ex:budgetUse; a:indicatorNodeMap ex:demoMap.
+
+ex:demoMap a:hasFactorNode ex:priceNode, ex:taxNode, ex:budgetNode;
+ a:hasIndicatorNode ex:revenueNode, ex:profitNode, ex:budgetUseNode;
+ a:hasEdge ex:edge1, ex:edge2, ex:edge3, ex:edge4.
+ex:edge1 a:sourceNode ex:priceNode; a:targetNode ex:revenueNode; a:edgeCategory a:Critical.
+ex:edge2 a:sourceNode ex:priceNode; a:targetNode ex:profitNode; a:edgeCategory a:Moderate.
+ex:edge3 a:sourceNode ex:taxNode; a:targetNode ex:profitNode; a:edgeCategory a:Moderate.
+ex:edge4 a:sourceNode ex:budgetNode; a:targetNode ex:budgetUseNode; a:edgeCategory a:Critical.

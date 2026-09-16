@@ -1,0 +1,48 @@
+PREFIX a: <https://w3id.org/km-energy/ontology#>
+PREFIX ex: <https://w3id.org/km-energy/example#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# CQ6. Report both selected and excluded assessments. Missing metadata stays
+# unbound: no invented estimator, formula, ATE, sigma or treatment contrast.
+SELECT ?assessment ?factorLabel ?indicatorLabel ?st ?ce ?category ?status
+       ?tauST ?tauCE ?selected ?hasEdge ?reason ?sourceLocator ?evidenceNote
+       ?method ?softwareVersion ?formula ?ate ?sigmaX ?sigmaY ?controlValue ?treatmentValue
+       ?sensitivityMethod ?sensitivityVersion ?sensitivitySettings
+WHERE {
+ VALUES ?report { ex:demoReport }
+ ?report a:reportMap ?map; a:reportAssessment ?assessment.
+ ?map a:mapExperiment ?experiment; a:mapRule ?rule;
+      a:candidateAssessment ?assessment; a:tauST ?tauST; a:tauCE ?tauCE;
+      a:selectionOperator ">".
+ ?assessment a:experiment ?experiment; a:rule ?rule;
+             a:factor ?factor; a:indicator ?indicator; a:st ?st; a:ce ?ce;
+             a:category ?category; a:status ?status.
+ ?factor rdfs:label ?factorLabel. ?indicator rdfs:label ?indicatorLabel.
+ BIND(?status IN ("reported", "complete") && ?st > ?tauST && ABS(?ce) > ?tauCE AS ?selected)
+ BIND(EXISTS { ?edge a:inMap ?map; a:basedOn ?assessment } AS ?hasEdge)
+ BIND(IF(?status NOT IN ("reported", "complete"), "Статус оценки не допускает включения",
+        IF(?selected, "Оба строгих порога пройдены",
+           "Хотя бы один строгий порог не пройден")) AS ?reason)
+ OPTIONAL { ?assessment a:sourceLocator ?sourceLocator }
+ OPTIONAL { ?assessment a:evidenceNote ?evidenceNote }
+ OPTIONAL { ?assessment a:ate ?ate }
+ OPTIONAL {
+  ?assessment a:sensitivity ?sensitivity.
+  OPTIONAL { ?sensitivity a:method ?sensitivityMethod }
+  OPTIONAL { ?sensitivity a:softwareVersion ?sensitivityVersion }
+  OPTIONAL { ?sensitivity a:analysisSettings ?sensitivitySettings }
+ }
+ OPTIONAL {
+  ?assessment a:estimation ?estimation.
+  OPTIONAL { ?estimation a:method ?method }
+  OPTIONAL { ?estimation a:softwareVersion ?softwareVersion }
+  OPTIONAL { ?estimation a:controlValue ?controlValue }
+  OPTIONAL { ?estimation a:treatmentValue ?treatmentValue }
+ }
+ OPTIONAL {
+  ?assessment a:normalization ?normalization.
+  OPTIONAL { ?normalization a:formula ?formula }
+  OPTIONAL { ?normalization a:sigmaX ?sigmaX }
+  OPTIONAL { ?normalization a:sigmaY ?sigmaY }
+ }
+}
+ORDER BY ?assessment

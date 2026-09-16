@@ -1,0 +1,348 @@
+{
+  "cq1_factors.rq": {
+    "variables": [
+      "factor",
+      "factorLabel"
+    ],
+    "row_count": 2,
+    "rows": [
+      {
+        "factor": "<https://w3id.org/km-energy/example#carbonTax>",
+        "factorLabel": "\"Налог на CO₂\"@ru"
+      },
+      {
+        "factor": "<https://w3id.org/km-energy/example#marketPrice>",
+        "factorLabel": "\"Рыночная цена\"@ru"
+      }
+    ]
+  },
+  "cq2_rank_st.rq": {
+    "variables": [
+      "assessment",
+      "factor",
+      "factorLabel",
+      "st"
+    ],
+    "row_count": 2,
+    "rows": [
+      {
+        "assessment": "<https://w3id.org/km-energy/example#priceProfit>",
+        "factor": "<https://w3id.org/km-energy/example#marketPrice>",
+        "factorLabel": "\"Рыночная цена\"@ru",
+        "st": "\"0.52\"^^<http://www.w3.org/2001/XMLSchema#decimal>"
+      },
+      {
+        "assessment": "<https://w3id.org/km-energy/example#taxProfit>",
+        "factor": "<https://w3id.org/km-energy/example#carbonTax>",
+        "factorLabel": "\"Налог на CO₂\"@ru",
+        "st": "\"0.41\"^^<http://www.w3.org/2001/XMLSchema#decimal>"
+      }
+    ]
+  },
+  "cq3_strong_effects.rq": {
+    "variables": [
+      "assessment",
+      "factor",
+      "factorLabel",
+      "ce",
+      "absoluteCE"
+    ],
+    "row_count": 2,
+    "rows": [
+      {
+        "assessment": "<https://w3id.org/km-energy/example#priceProfit>",
+        "factor": "<https://w3id.org/km-energy/example#marketPrice>",
+        "factorLabel": "\"Рыночная цена\"@ru",
+        "ce": "\"0.51\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "absoluteCE": "\"0.51\"^^<http://www.w3.org/2001/XMLSchema#decimal>"
+      },
+      {
+        "assessment": "<https://w3id.org/km-energy/example#taxProfit>",
+        "factor": "<https://w3id.org/km-energy/example#carbonTax>",
+        "factorLabel": "\"Налог на CO₂\"@ru",
+        "ce": "\"-0.44\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "absoluteCE": "\"0.44\"^^<http://www.w3.org/2001/XMLSchema#decimal>"
+      }
+    ]
+  },
+  "cq4_selected_edges.rq": {
+    "variables": [
+      "assessment",
+      "factor",
+      "indicator",
+      "st",
+      "ce",
+      "tauST",
+      "tauCE",
+      "weight",
+      "actualEdge"
+    ],
+    "row_count": 4,
+    "rows": [
+      {
+        "assessment": "<https://w3id.org/km-energy/example#budgetUseEffect>",
+        "factor": "<https://w3id.org/km-energy/example#budget>",
+        "indicator": "<https://w3id.org/km-energy/example#budgetUse>",
+        "st": "\"1.00\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "ce": "\"-0.52\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "tauST": "\"0.4\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "tauCE": "\"0.3\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "weight": "\"-0.52\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "actualEdge": "<https://w3id.org/km-energy/example#edge4>"
+      },
+      {
+        "assessment": "<https://w3id.org/km-energy/example#priceProfit>",
+        "factor": "<https://w3id.org/km-energy/example#marketPrice>",
+        "indicator": "<https://w3id.org/km-energy/example#profit>",
+        "st": "\"0.52\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "ce": "\"0.51\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "tauST": "\"0.4\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "tauCE": "\"0.3\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "weight": "\"0.51\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "actualEdge": "<https://w3id.org/km-energy/example#edge2>"
+      },
+      {
+        "assessment": "<https://w3id.org/km-energy/example#priceRevenue>",
+        "factor": "<https://w3id.org/km-energy/example#marketPrice>",
+        "indicator": "<https://w3id.org/km-energy/example#revenue>",
+        "st": "\"0.91\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "ce": "\"0.78\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "tauST": "\"0.4\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "tauCE": "\"0.3\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "weight": "\"0.78\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "actualEdge": "<https://w3id.org/km-energy/example#edge1>"
+      },
+      {
+        "assessment": "<https://w3id.org/km-energy/example#taxProfit>",
+        "factor": "<https://w3id.org/km-energy/example#carbonTax>",
+        "indicator": "<https://w3id.org/km-energy/example#profit>",
+        "st": "\"0.41\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "ce": "\"-0.44\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "tauST": "\"0.4\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "tauCE": "\"0.3\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "weight": "\"-0.44\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "actualEdge": "<https://w3id.org/km-energy/example#edge3>"
+      }
+    ]
+  },
+  "cq5_classification.rq": {
+    "variables": [
+      "assessment",
+      "st",
+      "ce",
+      "stored",
+      "computed",
+      "matches"
+    ],
+    "row_count": 5,
+    "rows": [
+      {
+        "assessment": "<https://w3id.org/km-energy/example#budgetUseEffect>",
+        "st": "\"1.00\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "ce": "\"-0.52\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "stored": "<https://w3id.org/km-energy/ontology#Critical>",
+        "computed": "<https://w3id.org/km-energy/ontology#Critical>",
+        "matches": "\"true\"^^<http://www.w3.org/2001/XMLSchema#boolean>"
+      },
+      {
+        "assessment": "<https://w3id.org/km-energy/example#priceProfit>",
+        "st": "\"0.52\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "ce": "\"0.51\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "stored": "<https://w3id.org/km-energy/ontology#Moderate>",
+        "computed": "<https://w3id.org/km-energy/ontology#Moderate>",
+        "matches": "\"true\"^^<http://www.w3.org/2001/XMLSchema#boolean>"
+      },
+      {
+        "assessment": "<https://w3id.org/km-energy/example#priceRevenue>",
+        "st": "\"0.91\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "ce": "\"0.78\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "stored": "<https://w3id.org/km-energy/ontology#Critical>",
+        "computed": "<https://w3id.org/km-energy/ontology#Critical>",
+        "matches": "\"true\"^^<http://www.w3.org/2001/XMLSchema#boolean>"
+      },
+      {
+        "assessment": "<https://w3id.org/km-energy/example#taxProfit>",
+        "st": "\"0.41\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "ce": "\"-0.44\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "stored": "<https://w3id.org/km-energy/ontology#Moderate>",
+        "computed": "<https://w3id.org/km-energy/ontology#Moderate>",
+        "matches": "\"true\"^^<http://www.w3.org/2001/XMLSchema#boolean>"
+      },
+      {
+        "assessment": "<https://w3id.org/km-energy/example#windCapacityEffect>",
+        "st": "\"1.00\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "ce": "\"0.06\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "stored": "<https://w3id.org/km-energy/ontology#Uncertainty>",
+        "computed": "<https://w3id.org/km-energy/ontology#Uncertainty>",
+        "matches": "\"true\"^^<http://www.w3.org/2001/XMLSchema#boolean>"
+      }
+    ]
+  },
+  "cq6_report.rq": {
+    "variables": [
+      "assessment",
+      "factorLabel",
+      "indicatorLabel",
+      "st",
+      "ce",
+      "category",
+      "status",
+      "tauST",
+      "tauCE",
+      "selected",
+      "hasEdge",
+      "reason",
+      "sourceLocator",
+      "evidenceNote",
+      "method",
+      "softwareVersion",
+      "formula",
+      "ate",
+      "sigmaX",
+      "sigmaY",
+      "controlValue",
+      "treatmentValue",
+      "sensitivityMethod",
+      "sensitivityVersion",
+      "sensitivitySettings"
+    ],
+    "row_count": 5,
+    "rows": [
+      {
+        "assessment": "<https://w3id.org/km-energy/example#budgetUseEffect>",
+        "factorLabel": "\"Инвестиционный бюджет\"@ru",
+        "indicatorLabel": "\"Использование бюджета\"@ru",
+        "st": "\"1.00\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "ce": "\"-0.52\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "category": "<https://w3id.org/km-energy/ontology#Critical>",
+        "status": "\"reported\"",
+        "tauST": "\"0.4\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "tauCE": "\"0.3\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "selected": "\"true\"^^<http://www.w3.org/2001/XMLSchema#boolean>",
+        "hasEdge": "\"true\"^^<http://www.w3.org/2001/XMLSchema#boolean>",
+        "reason": "\"Оба строгих порога пройдены\"",
+        "sourceLocator": "\"Козлов_Михеев_rev01.docx, раздел 3.3, перечень критических связей, Инвестиционный бюджет — Использование бюджета\"",
+        "evidenceNote": "\"Округлённые значения переписаны из статьи; значение ST=1 не объявляется исходной нескорректированной оценкой.\"",
+        "method": null,
+        "softwareVersion": null,
+        "formula": null,
+        "ate": null,
+        "sigmaX": null,
+        "sigmaY": null,
+        "controlValue": null,
+        "treatmentValue": null,
+        "sensitivityMethod": null,
+        "sensitivityVersion": null,
+        "sensitivitySettings": null
+      },
+      {
+        "assessment": "<https://w3id.org/km-energy/example#priceProfit>",
+        "factorLabel": "\"Рыночная цена\"@ru",
+        "indicatorLabel": "\"Прибыль\"@ru",
+        "st": "\"0.52\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "ce": "\"0.51\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "category": "<https://w3id.org/km-energy/ontology#Moderate>",
+        "status": "\"reported\"",
+        "tauST": "\"0.4\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "tauCE": "\"0.3\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "selected": "\"true\"^^<http://www.w3.org/2001/XMLSchema#boolean>",
+        "hasEdge": "\"true\"^^<http://www.w3.org/2001/XMLSchema#boolean>",
+        "reason": "\"Оба строгих порога пройдены\"",
+        "sourceLocator": "\"Козлов_Михеев_rev01.docx, раздел 3.3, перечень умеренных связей, Рыночная цена — Прибыль\"",
+        "evidenceNote": "\"Округлённые значения переписаны из статьи; ATE, нормировка, контраст и версия опубликованного расчёта не восстановлены.\"",
+        "method": null,
+        "softwareVersion": null,
+        "formula": null,
+        "ate": null,
+        "sigmaX": null,
+        "sigmaY": null,
+        "controlValue": null,
+        "treatmentValue": null,
+        "sensitivityMethod": null,
+        "sensitivityVersion": null,
+        "sensitivitySettings": null
+      },
+      {
+        "assessment": "<https://w3id.org/km-energy/example#priceRevenue>",
+        "factorLabel": "\"Рыночная цена\"@ru",
+        "indicatorLabel": "\"Выручка\"@ru",
+        "st": "\"0.91\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "ce": "\"0.78\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "category": "<https://w3id.org/km-energy/ontology#Critical>",
+        "status": "\"reported\"",
+        "tauST": "\"0.4\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "tauCE": "\"0.3\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "selected": "\"true\"^^<http://www.w3.org/2001/XMLSchema#boolean>",
+        "hasEdge": "\"true\"^^<http://www.w3.org/2001/XMLSchema#boolean>",
+        "reason": "\"Оба строгих порога пройдены\"",
+        "sourceLocator": "\"Козлов_Михеев_rev01.docx, раздел 3.3, перечень критических связей, Рыночная цена — Выручка\"",
+        "evidenceNote": "\"Округлённые значения переписаны из статьи; ATE, нормировка, контраст и версия опубликованного расчёта не восстановлены.\"",
+        "method": null,
+        "softwareVersion": null,
+        "formula": null,
+        "ate": null,
+        "sigmaX": null,
+        "sigmaY": null,
+        "controlValue": null,
+        "treatmentValue": null,
+        "sensitivityMethod": null,
+        "sensitivityVersion": null,
+        "sensitivitySettings": null
+      },
+      {
+        "assessment": "<https://w3id.org/km-energy/example#taxProfit>",
+        "factorLabel": "\"Налог на CO₂\"@ru",
+        "indicatorLabel": "\"Прибыль\"@ru",
+        "st": "\"0.41\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "ce": "\"-0.44\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "category": "<https://w3id.org/km-energy/ontology#Moderate>",
+        "status": "\"reported\"",
+        "tauST": "\"0.4\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "tauCE": "\"0.3\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "selected": "\"true\"^^<http://www.w3.org/2001/XMLSchema#boolean>",
+        "hasEdge": "\"true\"^^<http://www.w3.org/2001/XMLSchema#boolean>",
+        "reason": "\"Оба строгих порога пройдены\"",
+        "sourceLocator": "\"Козлов_Михеев_rev01.docx, раздел 3.3, перечень умеренных связей, Налог на CO₂ — Прибыль\"",
+        "evidenceNote": "\"Округлённые значения переписаны из статьи; ATE, нормировка, контраст и версия опубликованного расчёта не восстановлены.\"",
+        "method": null,
+        "softwareVersion": null,
+        "formula": null,
+        "ate": null,
+        "sigmaX": null,
+        "sigmaY": null,
+        "controlValue": null,
+        "treatmentValue": null,
+        "sensitivityMethod": null,
+        "sensitivityVersion": null,
+        "sensitivitySettings": null
+      },
+      {
+        "assessment": "<https://w3id.org/km-energy/example#windCapacityEffect>",
+        "factorLabel": "\"Ресурс ветра (юг)\"@ru",
+        "indicatorLabel": "\"Новые мощности ВЭС\"@ru",
+        "st": "\"1.00\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "ce": "\"0.06\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "category": "<https://w3id.org/km-energy/ontology#Uncertainty>",
+        "status": "\"reported\"",
+        "tauST": "\"0.4\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "tauCE": "\"0.3\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
+        "selected": "\"false\"^^<http://www.w3.org/2001/XMLSchema#boolean>",
+        "hasEdge": "\"false\"^^<http://www.w3.org/2001/XMLSchema#boolean>",
+        "reason": "\"Хотя бы один строгий порог не пройден\"",
+        "sourceLocator": "\"Козлов_Михеев_rev01.docx, раздел 3.3, источники неопределённости, Ресурс ветра (юг) — Новые мощности ВЭС\"",
+        "evidenceNote": "\"Округлённые значения переписаны из статьи; значение ST=1 не объявляется исходной нескорректированной оценкой.\"",
+        "method": null,
+        "softwareVersion": null,
+        "formula": null,
+        "ate": null,
+        "sigmaX": null,
+        "sigmaY": null,
+        "controlValue": null,
+        "treatmentValue": null,
+        "sensitivityMethod": null,
+        "sensitivityVersion": null,
+        "sensitivitySettings": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+PREFIX a: <https://w3id.org/km-energy/ontology#>
+PREFIX ex: <https://w3id.org/km-energy/example#>
+# CQ5. Classification is computed from the rule; stored category is cross-checked.
+SELECT ?assessment ?st ?ce ?stored ?computed ?matches WHERE {
+ VALUES ?experiment { ex:italyExperiment }
+ ?assessment a:experiment ?experiment; a:st ?st; a:ce ?ce;
+             a:rule ?rule; a:category ?stored.
+ ?rule a:stLow ?sl; a:stHigh ?sh; a:ceLow ?cl; a:ceStrong ?cs.
+ BIND(ABS(?ce) AS ?absoluteCE)
+ BIND(IF(?st >= ?sh && ?absoluteCE >= ?cl, a:Critical,
+      IF(?st < ?sl && ?absoluteCE >= ?cs, a:StrongLowST,
+      IF(?st >= ?sh && ?absoluteCE < ?cl, a:Uncertainty,
+      IF(?st < ?sl && ?absoluteCE < ?cl, a:Background, a:Moderate)))) AS ?computed)
+ BIND(?stored = ?computed AS ?matches)
+}
+ORDER BY ?assessment

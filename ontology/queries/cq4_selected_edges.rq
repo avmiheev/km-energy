@@ -1,0 +1,17 @@
+PREFIX a: <https://w3id.org/km-energy/ontology#>
+PREFIX ex: <https://w3id.org/km-energy/example#>
+# CQ4. Candidates satisfying the map's STRICT thresholds. Actual edge is optional
+# so the query also exposes a missing edge before SHACL validation.
+SELECT ?assessment ?factor ?indicator ?st ?ce ?tauST ?tauCE ?weight ?actualEdge WHERE {
+ VALUES ?map { ex:demoMap }
+ ?map a:mapExperiment ?experiment; a:mapRule ?rule;
+      a:candidateAssessment ?assessment; a:tauST ?tauST; a:tauCE ?tauCE;
+      a:selectionOperator ">".
+ ?assessment a:experiment ?experiment; a:rule ?rule;
+             a:factor ?factor; a:indicator ?indicator; a:st ?st; a:ce ?ce; a:status ?status.
+ FILTER(?status IN ("reported", "complete"))
+ FILTER(?st > ?tauST && ABS(?ce) > ?tauCE)
+ BIND(?ce AS ?weight)
+ OPTIONAL { ?actualEdge a:inMap ?map; a:basedOn ?assessment }
+}
+ORDER BY ?assessment

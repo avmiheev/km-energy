@@ -6,8 +6,8 @@
 
 <https://w3id.org/km-energy/ontology> a owl:Ontology ;
     rdfs:label "Онтология аналитического контура KM Energy"@ru ;
-    rdfs:comment "Формализация всех 34 понятий и 55 отношений согласованной концептуальной карты rev02. Вычислительное ядро дополнено контекстом моделирования, процедурами анализа и графическим представлением. Область статьи — связи X→Y; отдельный промежуточный слой Z и интервенционные эксперименты здесь не вводятся. Использование IRI не означает завершения регистрации перенаправлений w3id."@ru ;
-    owl:versionInfo "0.2.0; 2026-09-15; CXL rev02 alignment" .
+    rdfs:comment "Вычислительное ядро соответствует таблице 2 раздела 1.5 статьи rev05. Словарь включает классы и отношения концептуальной карты, контекст моделирования, процедуры анализа и графическое представление. Пример, правила классификации и запросы согласованы с rev05; область применения - связи от входных факторов к выходным показателям. Пространство имен зарегистрировано через w3id."@ru ;
+    owl:versionInfo "0.3.0; 2026-09-23; manuscript rev05" .
 
 a:CompleteAssessment a owl:Class ;
     rdfs:label "Оценка с заполненным паспортом"@ru ;
@@ -42,7 +42,8 @@ a:CompleteAssessment a owl:Class ;
         a:InfluenceAssessment .
 
 a:ReportedAssessment a owl:Class ;
-    rdfs:label "Оценка из текста статьи"@ru ;
+    rdfs:label "Оценка из материалов статьи"@ru ;
+    rdfs:comment "Сохраненная определенная оценка из текста или расчетных материалов статьи. Происхождение указывается в sourceLocator; наличие записи не означает повторного выполнения расчетов."@ru ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty a:ce ],
@@ -401,7 +402,8 @@ a:ObjectiveFunction a owl:Class ;
 
 a:StrongLowST a owl:NamedIndividual,
         a:LinkCategory ;
-    rdfs:label "Выраженный эффект при малом ST"@ru .
+    rdfs:label "Надёжные"@ru ;
+    rdfs:comment "Условное название категории таблицы 1 rev05: выраженный линейный эффект при малом положительном ST. Не утверждает статистическую надежность оценки."@ru .
 
 a:Uncertainty a owl:NamedIndividual,
         a:LinkCategory ;
@@ -590,6 +592,7 @@ a:stLow a owl:DatatypeProperty ;
 
 a:status a owl:DatatypeProperty ;
     rdfs:label "состояние оценки"@ru ;
+    rdfs:comment "В приложении rev05: reported - определенная оценка с категорией; No_ST - определенные метрики при ST не более нуля и модуле CE не менее нижней границы; undefined - одна или обе метрики не определены. Complete остается отдельным профилем полноты метаданных."@ru ;
     rdfs:domain a:InfluenceAssessment ;
     rdfs:range xsd:string .
 

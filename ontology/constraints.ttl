@@ -1,0 +1,268 @@
+@prefix a: <https://w3id.org/km-energy/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Closed-data validation, distinct from OWL consistency checking.
+# No [0,1] constraint is imposed on a numerical ST estimate.
+# xsd:decimal deliberately excludes NaN and infinities.
+
+a:ExperimentShape a sh:NodeShape; sh:targetClass a:Experiment;
+ sh:property [sh:path a:usesModel; sh:minCount 1; sh:maxCount 1; sh:class a:OptimizationModel];
+ sh:property [sh:path a:hasFactor; sh:class a:AnalyticalFactor];
+ sh:property [sh:path a:hasIndicator; sh:class a:OutputIndicator].
+
+a:DatasetShape a sh:NodeShape; sh:targetClass a:Dataset;
+ sh:property [sh:path a:datasetExperiment; sh:minCount 1; sh:maxCount 1; sh:class a:Experiment];
+ sh:property [sh:path a:hasScenario; sh:class a:Scenario];
+ sh:property [sh:path a:metadataStatus; sh:maxCount 1; sh:datatype xsd:string];
+ sh:property [sh:path a:artifactReference; sh:maxCount 1; sh:datatype xsd:string];
+ sh:sparql [sh:message "Сценарий набора должен относиться к тому же эксперименту."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  $this a:datasetExperiment ?experiment; a:hasScenario ?scenario.
+  FILTER NOT EXISTS { ?scenario a:scenarioExperiment ?experiment }
+ }"""].
+
+a:ScenarioShape a sh:NodeShape; sh:targetClass a:Scenario;
+ sh:property [sh:path a:scenarioExperiment; sh:minCount 1; sh:maxCount 1; sh:class a:Experiment];
+ sh:property [sh:path a:scenarioId; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1].
+
+a:AssessmentShape a sh:NodeShape; sh:targetClass a:InfluenceAssessment;
+ sh:property [sh:path a:experiment; sh:minCount 1; sh:maxCount 1; sh:class a:Experiment];
+ sh:property [sh:path a:factor; sh:minCount 1; sh:maxCount 1; sh:class a:AnalyticalFactor];
+ sh:property [sh:path a:indicator; sh:minCount 1; sh:maxCount 1; sh:class a:OutputIndicator];
+ sh:property [sh:path a:dataset; sh:minCount 1; sh:maxCount 1; sh:class a:Dataset];
+ sh:property [sh:path a:status; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1];
+ sh:property [sh:path a:st; sh:maxCount 1; sh:datatype xsd:decimal];
+ sh:property [sh:path a:ce; sh:maxCount 1; sh:datatype xsd:decimal];
+ sh:property [sh:path a:ate; sh:maxCount 1; sh:datatype xsd:decimal];
+ sh:property [sh:path a:beta; sh:maxCount 1; sh:datatype xsd:decimal];
+ sh:property [sh:path a:estimation; sh:maxCount 1; sh:class a:EstimationSpecification];
+ sh:property [sh:path a:sensitivity; sh:maxCount 1; sh:class a:EstimationSpecification];
+ sh:property [sh:path a:normalization; sh:maxCount 1; sh:class a:NormalizationSpecification];
+ sh:property [sh:path a:rule; sh:maxCount 1; sh:class a:ClassificationRule];
+ sh:property [sh:path a:category; sh:maxCount 1; sh:class a:LinkCategory;
+  sh:in (a:Critical a:StrongLowST a:Uncertainty a:Background a:Moderate)];
+ sh:sparql [sh:message "Фактор и показатель оценки должны входить в её эксперимент."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  $this a:experiment ?experiment; a:factor ?factor; a:indicator ?indicator.
+  FILTER (NOT EXISTS { ?experiment a:hasFactor ?factor }
+       || NOT EXISTS { ?experiment a:hasIndicator ?indicator })
+ }"""];
+ sh:sparql [sh:message "Оценка и её набор данных должны относиться к одному эксперименту."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  $this a:experiment ?experiment; a:dataset ?dataset.
+  FILTER NOT EXISTS { ?dataset a:datasetExperiment ?experiment }
+ }"""];
+ sh:sparql [sh:message "Сохранённая категория не соответствует ST, модулю CE и указанному правилу."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  $this a:st ?st; a:ce ?ce; a:rule ?rule; a:category ?stored.
+  ?rule a:stLow ?sl; a:stHigh ?sh; a:ceLow ?cl; a:ceStrong ?cs.
+  # Invalid literals are handled by SHACL datatype constraints. Safe temporary
+  # operands keep numerical SPARQL diagnostics from crashing on NaN/INF.
+  BIND(IF(REGEX(STR(?st), "^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$"), ?st, 0.0) AS ?numericST)
+  BIND(IF(REGEX(STR(?ce), "^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$"), ABS(?ce), 0.0) AS ?absoluteCE)
+  BIND(IF(?numericST >= ?sh && ?absoluteCE >= ?cs, a:Critical,
+       IF(?numericST > 0 && ?numericST < ?sl && ?absoluteCE >= ?cs, a:StrongLowST,
+       IF(?numericST >= ?sh && ?absoluteCE < ?cs, a:Uncertainty,
+       IF(?numericST < ?sh && ?absoluteCE < ?cl, a:Background, a:Moderate)))) AS ?computed)
+  FILTER((?numericST <= 0 && ?absoluteCE >= ?cl) || ?stored != ?computed)
+ }"""];
+ sh:sparql [sh:message "Для сохранённой категории необходимы ST, CE и правило классификации."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  $this a:category ?category.
+  FILTER NOT EXISTS { $this a:st ?st; a:ce ?ce; a:rule ?rule }
+ }"""];
+ sh:sparql [sh:message "Статус undefined не допускает численных ST, CE и категории."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  $this a:status "undefined".
+  { $this a:st ?value } UNION { $this a:ce ?value } UNION { $this a:category ?value }
+ }"""];
+ sh:sparql [sh:message "Статус No_ST требует ST <= 0, ABS(CE) >= ceLow и отсутствия категории."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  $this a:status "No_ST".
+  FILTER(EXISTS { $this a:category ?category } || NOT EXISTS {
+   $this a:st ?st; a:ce ?ce; a:rule/a:ceLow ?cl.
+   FILTER(?st <= 0 && ABS(?ce) >= ?cl)
+  })
+ }"""];
+ sh:sparql [sh:message "Статус reported/complete требует численных ST, CE, правила и одной категории."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  $this a:status ?status. FILTER(?status IN ("reported", "complete"))
+  FILTER NOT EXISTS { $this a:st ?st; a:ce ?ce; a:rule ?rule; a:category ?category }
+ }"""].
+
+a:ReportedAssessmentShape a sh:NodeShape; sh:targetClass a:ReportedAssessment;
+ sh:property [sh:path a:st; sh:minCount 1];
+ sh:property [sh:path a:ce; sh:minCount 1];
+ sh:property [sh:path a:sourceLocator; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1];
+ sh:property [sh:path a:evidenceNote; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1].
+
+# Specifications may contain partial known metadata. The Complete profile
+# below additionally requires every field listed in the manuscript supplement.
+a:EstimationShape a sh:NodeShape; sh:targetClass a:EstimationSpecification;
+ sh:property [sh:path a:method; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1];
+ sh:property [sh:path a:softwareVersion; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1];
+ sh:property [sh:path a:graphSpecification; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1];
+ sh:property [sh:path a:adjustmentSet; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1];
+ sh:property [sh:path a:controlValue; sh:maxCount 1; sh:datatype xsd:decimal];
+ sh:property [sh:path a:treatmentValue; sh:maxCount 1; sh:datatype xsd:decimal];
+ sh:property [sh:path a:factorUnit; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1];
+ sh:property [sh:path a:outputUnit; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1];
+ sh:property [sh:path a:averagingPopulation; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1];
+ sh:property [sh:path a:analysisSettings; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1].
+
+a:SensitivitySpecificationShape a sh:NodeShape;
+ sh:node a:EstimationShape;
+ sh:property [sh:path a:method; sh:minCount 1];
+ sh:property [sh:path a:softwareVersion; sh:minCount 1];
+ sh:property [sh:path a:analysisSettings; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1].
+
+a:NormalizationShape a sh:NodeShape; sh:targetClass a:NormalizationSpecification;
+ sh:property [sh:path a:formula; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1];
+ sh:property [sh:path a:sigmaX; sh:maxCount 1; sh:datatype xsd:decimal; sh:minExclusive 0];
+ sh:property [sh:path a:sigmaY; sh:maxCount 1; sh:datatype xsd:decimal; sh:minExclusive 0];
+ sh:property [sh:path a:scaleA; sh:maxCount 1; sh:datatype xsd:decimal; sh:minExclusive 0];
+ sh:property [sh:path a:ddof; sh:maxCount 1; sh:datatype xsd:integer; sh:minInclusive 0];
+ sh:property [sh:path a:referenceRows; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1];
+ sh:property [sh:path a:normalizationNote; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1].
+
+a:CompleteEstimationShape a sh:NodeShape;
+ sh:node a:EstimationShape;
+ sh:property [sh:path a:method; sh:minCount 1];
+ sh:property [sh:path a:softwareVersion; sh:minCount 1];
+ sh:property [sh:path a:graphSpecification; sh:minCount 1];
+ sh:property [sh:path a:adjustmentSet; sh:minCount 1];
+ sh:property [sh:path a:controlValue; sh:minCount 1];
+ sh:property [sh:path a:treatmentValue; sh:minCount 1];
+ sh:property [sh:path a:factorUnit; sh:minCount 1];
+ sh:property [sh:path a:outputUnit; sh:minCount 1];
+ sh:property [sh:path a:averagingPopulation; sh:minCount 1].
+
+a:CompleteNormalizationShape a sh:NodeShape;
+ sh:node a:NormalizationShape;
+ sh:property [sh:path a:formula; sh:minCount 1];
+ sh:property [sh:path a:sigmaX; sh:minCount 1];
+ sh:property [sh:path a:sigmaY; sh:minCount 1];
+ sh:property [sh:path a:ddof; sh:minCount 1];
+ sh:property [sh:path a:referenceRows; sh:minCount 1];
+ sh:property [sh:path a:normalizationNote; sh:minCount 1].
+
+a:CompleteAssessmentShape a sh:NodeShape; sh:targetClass a:CompleteAssessment;
+ sh:property [sh:path a:st; sh:minCount 1];
+ sh:property [sh:path a:ce; sh:minCount 1];
+ sh:property [sh:path a:ate; sh:minCount 1];
+ sh:property [sh:path a:beta; sh:minCount 1];
+ sh:property [sh:path a:rule; sh:minCount 1];
+ sh:property [sh:path a:category; sh:minCount 1];
+ sh:property [sh:path a:estimation; sh:minCount 1; sh:node a:CompleteEstimationShape];
+ sh:property [sh:path a:sensitivity; sh:minCount 1; sh:node a:SensitivitySpecificationShape];
+ sh:property [sh:path a:normalization; sh:minCount 1; sh:node a:CompleteNormalizationShape].
+
+a:RuleShape a sh:NodeShape; sh:targetClass a:ClassificationRule;
+ sh:property [sh:path a:ruleVersion; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1];
+ sh:property [sh:path a:stLow; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:decimal; sh:minInclusive 0; sh:lessThan a:stHigh];
+ sh:property [sh:path a:stHigh; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:decimal];
+ sh:property [sh:path a:ceLow; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:decimal; sh:minInclusive 0; sh:lessThanOrEquals a:ceStrong];
+ sh:property [sh:path a:ceStrong; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:decimal].
+
+a:CandidateShape a sh:NodeShape;
+ sh:property [sh:path a:rule; sh:minCount 1].
+
+# Candidates include unsuccessful/undefined results. Only selected edges
+# require defined values, a category and a status admitted by the graph filter.
+a:SelectedAssessmentShape a sh:NodeShape;
+ sh:property [sh:path a:st; sh:minCount 1];
+ sh:property [sh:path a:ce; sh:minCount 1];
+ sh:property [sh:path a:category; sh:minCount 1];
+ sh:property [sh:path a:status; sh:in ("reported" "complete")].
+
+a:MapShape a sh:NodeShape; sh:targetClass a:CognitiveMap;
+ sh:property [sh:path a:mapExperiment; sh:minCount 1; sh:maxCount 1; sh:class a:Experiment];
+ sh:property [sh:path a:mapRule; sh:minCount 1; sh:maxCount 1; sh:class a:ClassificationRule];
+ sh:property [sh:path a:tauST; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:decimal; sh:minInclusive 0];
+ sh:property [sh:path a:tauCE; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:decimal; sh:minInclusive 0];
+ sh:property [sh:path a:selectionOperator; sh:minCount 1; sh:maxCount 1; sh:hasValue ">"];
+ sh:property [sh:path a:candidateAssessment; sh:minCount 1; sh:class a:InfluenceAssessment; sh:node a:CandidateShape];
+ sh:sparql [sh:message "Каждый кандидат карты должен иметь её эксперимент и правило классификации."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  $this a:mapExperiment ?experiment; a:mapRule ?rule; a:candidateAssessment ?assessment.
+  FILTER NOT EXISTS { ?assessment a:experiment ?experiment; a:rule ?rule }
+ }"""];
+ sh:sparql [sh:message "Для кандидата, прошедшего строгие пороги ST и модуля CE, отсутствует ребро."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  $this a:candidateAssessment ?assessment; a:tauST ?tauST; a:tauCE ?tauCE.
+  ?assessment a:st ?st; a:ce ?ce; a:status ?status.
+  BIND(IF(REGEX(STR(?st), "^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$"), ?st, 0.0) AS ?numericST)
+  BIND(IF(REGEX(STR(?ce), "^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$"), ABS(?ce), 0.0) AS ?absoluteCE)
+  FILTER(?status IN ("reported", "complete") && ?numericST > ?tauST && ?absoluteCE > ?tauCE)
+  FILTER NOT EXISTS { ?edge a:inMap $this; a:basedOn ?assessment }
+ }"""];
+ sh:sparql [sh:message "Одна оценка не должна представляться двумя разными рёбрами одной карты."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  ?edge1 a:inMap $this; a:basedOn ?assessment.
+  ?edge2 a:inMap $this; a:basedOn ?assessment.
+  FILTER(?edge1 != ?edge2)
+ }"""];
+ sh:sparql [sh:message "Два ребра одной карты не должны иметь одинаковые источник и цель."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  ?edge1 a:inMap $this; a:source ?source; a:target ?target.
+  ?edge2 a:inMap $this; a:source ?source; a:target ?target.
+  FILTER(?edge1 != ?edge2)
+ }"""].
+
+a:EdgeShape a sh:NodeShape; sh:targetClass a:MapEdge;
+ sh:targetSubjectsOf a:inMap; sh:class a:MapEdge;
+ sh:property [sh:path a:inMap; sh:minCount 1; sh:maxCount 1; sh:class a:CognitiveMap];
+ sh:property [sh:path a:basedOn; sh:minCount 1; sh:maxCount 1; sh:class a:InfluenceAssessment; sh:node a:SelectedAssessmentShape];
+ sh:property [sh:path a:source; sh:minCount 1; sh:maxCount 1; sh:class a:AnalyticalFactor];
+ sh:property [sh:path a:target; sh:minCount 1; sh:maxCount 1; sh:class a:OutputIndicator];
+ sh:property [sh:path a:weight; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:decimal];
+ sh:sparql [sh:message "Источник, цель и вес ребра должны совпадать с фактором, показателем и CE оценки."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  $this a:basedOn ?assessment; a:source ?source; a:target ?target; a:weight ?weight.
+  ?assessment a:factor ?factor; a:indicator ?indicator; a:ce ?ce.
+  FILTER(?source != ?factor || ?target != ?indicator || ?weight != ?ce)
+ }"""];
+ sh:sparql [sh:message "Основание ребра должно входить в кандидаты карты с тем же экспериментом и правилом."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  $this a:inMap ?map; a:basedOn ?assessment.
+  ?map a:mapExperiment ?experiment; a:mapRule ?rule.
+  FILTER NOT EXISTS {
+   ?map a:candidateAssessment ?assessment.
+   ?assessment a:experiment ?experiment; a:rule ?rule.
+  }
+ }"""];
+ sh:sparql [sh:message "Ребро не проходит строгое условие ST > τST и ABS(CE) > τCE либо статус оценки не допускает включения."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  $this a:inMap ?map; a:basedOn ?assessment.
+  ?map a:tauST ?tauST; a:tauCE ?tauCE.
+  ?assessment a:st ?st; a:ce ?ce; a:status ?status.
+  BIND(IF(REGEX(STR(?st), "^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$"), ?st, 0.0) AS ?numericST)
+  BIND(IF(REGEX(STR(?ce), "^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$"), ABS(?ce), 0.0) AS ?absoluteCE)
+  FILTER(!(?status IN ("reported", "complete") && ?numericST > ?tauST && ?absoluteCE > ?tauCE))
+ }"""].
+
+a:ReportShape a sh:NodeShape; sh:targetClass a:AnalyticalReport;
+ sh:property [sh:path a:reportMap; sh:minCount 1; sh:maxCount 1; sh:class a:CognitiveMap];
+ sh:property [sh:path a:reportAssessment; sh:minCount 1; sh:class a:InfluenceAssessment];
+ sh:sparql [sh:message "Оценка отчёта должна принадлежать явно заданным кандидатам его карты."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+ SELECT $this WHERE {
+  $this a:reportMap ?map; a:reportAssessment ?assessment.
+  FILTER NOT EXISTS { ?map a:candidateAssessment ?assessment }
+ }"""].

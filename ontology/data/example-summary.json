@@ -1,0 +1,53 @@
+{
+  "article_revision": "rev05",
+  "rule_version": "table1-rev05",
+  "filter": {
+    "st_operator": ">",
+    "st_threshold": "0.1",
+    "abs_ce_operator": ">",
+    "abs_ce_threshold": "0.3"
+  },
+  "months": {
+    "2013-01": {
+      "factors": 22,
+      "indicators": 11,
+      "assessments": 242,
+      "defined_assessments": 242,
+      "statuses": {
+        "reported": 237,
+        "No_ST": 5,
+        "undefined": 0
+      },
+      "categories": {
+        "Critical": 5,
+        "StrongLowST": 9,
+        "Uncertainty": 3,
+        "Background": 181,
+        "Moderate": 39
+      },
+      "selected_edges": 20
+    },
+    "2013-07": {
+      "factors": 22,
+      "indicators": 11,
+      "assessments": 242,
+      "defined_assessments": 220,
+      "statuses": {
+        "reported": 218,
+        "No_ST": 2,
+        "undefined": 22
+      },
+      "categories": {
+        "Critical": 6,
+        "StrongLowST": 5,
+        "Uncertainty": 1,
+        "Background": 164,
+        "Moderate": 42
+      },
+      "selected_edges": 16
+    }
+  },
+  "common_selected_pairs": 11,
+  "total_assessments": 484,
+  "scope_note": "Counts describe aggregated X-to-Y assessments; no scenario rows or statistical estimates are regenerated."
+}

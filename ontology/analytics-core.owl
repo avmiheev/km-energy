@@ -179,8 +179,8 @@
   <rdf:Description rdf:about="https://w3id.org/km-energy/ontology">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
     <rdfs:label xml:lang="ru">Онтология аналитического контура KM Energy</rdfs:label>
-    <rdfs:comment xml:lang="ru">Формализация всех 34 понятий и 55 отношений согласованной концептуальной карты rev02. Вычислительное ядро дополнено контекстом моделирования, процедурами анализа и графическим представлением. Область статьи — связи X→Y; отдельный промежуточный слой Z и интервенционные эксперименты здесь не вводятся. Использование IRI не означает завершения регистрации перенаправлений w3id.</rdfs:comment>
-    <owl:versionInfo>0.2.0; 2026-09-15; CXL rev02 alignment</owl:versionInfo>
+    <rdfs:comment xml:lang="ru">Вычислительное ядро соответствует таблице 2 раздела 1.5 статьи rev05. Словарь включает классы и отношения концептуальной карты, контекст моделирования, процедуры анализа и графическое представление. Пример, правила классификации и запросы согласованы с rev05; область применения - связи от входных факторов к выходным показателям. Пространство имен зарегистрировано через w3id.</rdfs:comment>
+    <owl:versionInfo>0.3.0; 2026-09-23; manuscript rev05</owl:versionInfo>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ScenarioParameter">
     <rdfs:comment xml:lang="ru">Определение входного сценарного параметра; может быть представлено аналитическим фактором. Значение параметра в сценарии и его роль в анализе различаются.</rdfs:comment>
@@ -865,6 +865,7 @@
   <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#status">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:label xml:lang="ru">состояние оценки</rdfs:label>
+    <rdfs:comment xml:lang="ru">В приложении rev05: reported - определенная оценка с категорией; No_ST - определенные метрики при ST не более нуля и модуле CE не менее нижней границы; undefined - одна или обе метрики не определены. Complete остается отдельным профилем полноты метаданных.</rdfs:comment>
     <rdfs:domain rdf:resource="https://w3id.org/km-energy/ontology#InfluenceAssessment"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </rdf:Description>
@@ -929,7 +930,8 @@
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ReportedAssessment">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="ru">Оценка из текста статьи</rdfs:label>
+    <rdfs:label xml:lang="ru">Оценка из материалов статьи</rdfs:label>
+    <rdfs:comment xml:lang="ru">Сохраненная определенная оценка из текста или расчетных материалов статьи. Происхождение указывается в sourceLocator; наличие записи не означает повторного выполнения расчетов.</rdfs:comment>
     <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b10"/>
     <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b11"/>
     <rdfs:subClassOf rdf:nodeID="n499cb77f6ced4686b04c604702771a90b12"/>
@@ -1128,7 +1130,8 @@
   <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#StrongLowST">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="https://w3id.org/km-energy/ontology#LinkCategory"/>
-    <rdfs:label xml:lang="ru">Выраженный эффект при малом ST</rdfs:label>
+    <rdfs:label xml:lang="ru">Надёжные</rdfs:label>
+    <rdfs:comment xml:lang="ru">Условное название категории таблицы 1 rev05: выраженный линейный эффект при малом положительном ST. Не утверждает статистическую надежность оценки.</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/km-energy/ontology#ddof">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>

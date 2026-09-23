@@ -1,16 +1,30 @@
 PREFIX a: <https://w3id.org/km-energy/ontology#>
 PREFIX ex: <https://w3id.org/km-energy/example#>
-# CQ5. Classification is computed from the rule; stored category is cross-checked.
-SELECT ?assessment ?st ?ce ?stored ?computed ?matches WHERE {
+# CQ5. Keep every assessment, including No_ST and undefined records.
+# Missing estimates and No_ST are statuses, not categories of table 1.
+SELECT ?assessment ?st ?ce ?status ?computedStatus ?stored ?computed ?matches WHERE {
  VALUES ?experiment { ex:italyExperiment }
- ?assessment a:experiment ?experiment; a:st ?st; a:ce ?ce;
-             a:rule ?rule; a:category ?stored.
+ ?assessment a:experiment ?experiment; a:rule ?rule.
+ OPTIONAL { ?assessment a:st ?st }
+ OPTIONAL { ?assessment a:ce ?ce }
+ OPTIONAL { ?assessment a:status ?status }
+ OPTIONAL { ?assessment a:category ?stored }
  ?rule a:stLow ?sl; a:stHigh ?sh; a:ceLow ?cl; a:ceStrong ?cs.
  BIND(ABS(?ce) AS ?absoluteCE)
- BIND(IF(?st >= ?sh && ?absoluteCE >= ?cl, a:Critical,
-      IF(?st < ?sl && ?absoluteCE >= ?cs, a:StrongLowST,
-      IF(?st >= ?sh && ?absoluteCE < ?cl, a:Uncertainty,
-      IF(?st < ?sl && ?absoluteCE < ?cl, a:Background, a:Moderate)))) AS ?computed)
- BIND(?stored = ?computed AS ?matches)
+ BIND(BOUND(?st) && BOUND(?ce) AS ?defined)
+ BIND(IF(!?defined, "undefined",
+         IF(?st <= 0 && ?absoluteCE >= ?cl, "No_ST", "reported")) AS ?computedStatus)
+ BIND(IF(?computedStatus = "reported",
+      IF(?st >= ?sh && ?absoluteCE >= ?cs, a:Critical,
+      IF(?st > 0 && ?st < ?sl && ?absoluteCE >= ?cs, a:StrongLowST,
+      IF(?st >= ?sh && ?absoluteCE < ?cs, a:Uncertainty,
+      IF(?st < ?sh && ?absoluteCE < ?cl, a:Background, a:Moderate)))),
+      ?noCategory) AS ?computed)
+ BIND(COALESCE(IF(?computedStatus = "undefined",
+        ?status = "undefined" && !BOUND(?st) && !BOUND(?ce) && !BOUND(?stored),
+        IF(?computedStatus = "No_ST",
+           ?status = "No_ST" && !BOUND(?stored),
+           ?status IN ("reported", "complete") && BOUND(?stored) && ?stored = ?computed)),
+        false) AS ?matches)
 }
 ORDER BY ?assessment

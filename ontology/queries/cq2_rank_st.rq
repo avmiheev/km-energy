@@ -1,9 +1,10 @@
 PREFIX a: <https://w3id.org/km-energy/ontology#>
 PREFIX ex: <https://w3id.org/km-energy/example#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-# CQ2. Rank the AVAILABLE profit assessments, not all factors of the article.
+# CQ2. Rank the defined profit assessments by their stored ST values.
 SELECT ?assessment ?factor ?factorLabel ?st WHERE {
- VALUES (?experiment ?indicator) { (ex:italyExperiment ex:profit) }
+ VALUES ?experiment { ex:italyExperiment }
+ VALUES ?indicator { ex:profit_eur }
  ?assessment a:experiment ?experiment; a:indicator ?indicator; a:factor ?factor; a:st ?st.
  ?factor rdfs:label ?factorLabel.
 }

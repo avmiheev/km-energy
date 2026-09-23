@@ -14,35 +14,30 @@ WHERE {
       a:candidateAssessment ?assessment; a:tauST ?tauST; a:tauCE ?tauCE;
       a:selectionOperator ">".
  ?assessment a:experiment ?experiment; a:rule ?rule;
-             a:factor ?factor; a:indicator ?indicator; a:st ?st; a:ce ?ce;
-             a:category ?category; a:status ?status.
+             a:factor ?factor; a:indicator ?indicator; a:status ?status.
  ?factor rdfs:label ?factorLabel. ?indicator rdfs:label ?indicatorLabel.
- BIND(?status IN ("reported", "complete") && ?st > ?tauST && ABS(?ce) > ?tauCE AS ?selected)
+ OPTIONAL { ?assessment a:st ?st }
+ OPTIONAL { ?assessment a:ce ?ce }
+ OPTIONAL { ?assessment a:category ?category }
+ BIND(COALESCE(?status IN ("reported", "complete") && ?st > ?tauST && ABS(?ce) > ?tauCE, false) AS ?selected)
  BIND(EXISTS { ?edge a:inMap ?map; a:basedOn ?assessment } AS ?hasEdge)
- BIND(IF(?status NOT IN ("reported", "complete"), "Статус оценки не допускает включения",
+ BIND(IF(?status = "undefined", "Оценки не определены",
+        IF(?status = "No_ST", "Статус No_ST: ST не положителен при модуле CE не менее ceLow",
+        IF(?status NOT IN ("reported", "complete"), "Статус оценки не допускает включения",
         IF(?selected, "Оба строгих порога пройдены",
-           "Хотя бы один строгий порог не пройден")) AS ?reason)
+           "Хотя бы один строгий порог не пройден")))) AS ?reason)
  OPTIONAL { ?assessment a:sourceLocator ?sourceLocator }
  OPTIONAL { ?assessment a:evidenceNote ?evidenceNote }
  OPTIONAL { ?assessment a:ate ?ate }
- OPTIONAL {
-  ?assessment a:sensitivity ?sensitivity.
-  OPTIONAL { ?sensitivity a:method ?sensitivityMethod }
-  OPTIONAL { ?sensitivity a:softwareVersion ?sensitivityVersion }
-  OPTIONAL { ?sensitivity a:analysisSettings ?sensitivitySettings }
- }
- OPTIONAL {
-  ?assessment a:estimation ?estimation.
-  OPTIONAL { ?estimation a:method ?method }
-  OPTIONAL { ?estimation a:softwareVersion ?softwareVersion }
-  OPTIONAL { ?estimation a:controlValue ?controlValue }
-  OPTIONAL { ?estimation a:treatmentValue ?treatmentValue }
- }
- OPTIONAL {
-  ?assessment a:normalization ?normalization.
-  OPTIONAL { ?normalization a:formula ?formula }
-  OPTIONAL { ?normalization a:sigmaX ?sigmaX }
-  OPTIONAL { ?normalization a:sigmaY ?sigmaY }
- }
+ OPTIONAL { ?assessment a:sensitivity/a:method ?sensitivityMethod }
+ OPTIONAL { ?assessment a:sensitivity/a:softwareVersion ?sensitivityVersion }
+ OPTIONAL { ?assessment a:sensitivity/a:analysisSettings ?sensitivitySettings }
+ OPTIONAL { ?assessment a:estimation/a:method ?method }
+ OPTIONAL { ?assessment a:estimation/a:softwareVersion ?softwareVersion }
+ OPTIONAL { ?assessment a:estimation/a:controlValue ?controlValue }
+ OPTIONAL { ?assessment a:estimation/a:treatmentValue ?treatmentValue }
+ OPTIONAL { ?assessment a:normalization/a:formula ?formula }
+ OPTIONAL { ?assessment a:normalization/a:sigmaX ?sigmaX }
+ OPTIONAL { ?assessment a:normalization/a:sigmaY ?sigmaY }
 }
 ORDER BY ?assessment

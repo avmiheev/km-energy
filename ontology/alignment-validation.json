@@ -1,0 +1,226 @@
+{
+  "generated_at_utc": "2026-09-23T01:49:04.844864+00:00",
+  "all_checks_passed": true,
+  "scope": "Self-contained explicit RDF nodes/results and compact-projection equivalence for both rev05 maps; synthetic SHACL negative tests. Full-data SHACL is recorded by validate.py. No external CXL/CmapTools validation, OWL DL consistency proof or scientific recomputation.",
+  "projection_triples": 3180,
+  "checks": [
+    {
+      "name": "rdfxml_turtle_isomorphic",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "projection_does_not_redefine_compact_assertions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all_66_explicit_map_nodes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "a:stResult_all_462_values_and_unique_owners",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "a:ceResult_all_462_values_and_unique_owners",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "january_a:FactorNode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "january_a:IndicatorNode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "january_inverse_hasEdge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "january_explicit_endpoint_nodes_and_categories",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "july_a:FactorNode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "july_a:IndicatorNode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "july_inverse_hasEdge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "july_explicit_endpoint_nodes_and_categories",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "inverse_properties_declared",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all_cq_answers_preserved_by_explicit_projection",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "synthetic_projection_baseline_valid",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all_projection_negative_tests_detected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no_placeholder_namespace_in_active_rdf",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "negative_tests": [
+    {
+      "name": "wrong_source_node",
+      "passed": true,
+      "violation_count": 2
+    },
+    {
+      "name": "wrong_target_node",
+      "passed": true,
+      "violation_count": 2
+    },
+    {
+      "name": "wrong_node_map",
+      "passed": true,
+      "violation_count": 2
+    },
+    {
+      "name": "mismatched_st_result",
+      "passed": true,
+      "violation_count": 1
+    },
+    {
+      "name": "mismatched_ce_result",
+      "passed": true,
+      "violation_count": 1
+    },
+    {
+      "name": "wrong_edge_category",
+      "passed": true,
+      "violation_count": 1
+    }
+  ],
+  "competency_queries": [
+    {
+      "file": "cq1_factors.rq",
+      "period": "january",
+      "rows": 22,
+      "passed": true
+    },
+    {
+      "file": "cq1_factors.rq",
+      "period": "july",
+      "rows": 22,
+      "passed": true
+    },
+    {
+      "file": "cq2_rank_st.rq",
+      "period": "january",
+      "rows": 22,
+      "passed": true
+    },
+    {
+      "file": "cq2_rank_st.rq",
+      "period": "july",
+      "rows": 22,
+      "passed": true
+    },
+    {
+      "file": "cq3_strong_effects.rq",
+      "period": "january",
+      "rows": 2,
+      "passed": true
+    },
+    {
+      "file": "cq3_strong_effects.rq",
+      "period": "july",
+      "rows": 2,
+      "passed": true
+    },
+    {
+      "file": "cq4_selected_edges.rq",
+      "period": "january",
+      "rows": 20,
+      "passed": true
+    },
+    {
+      "file": "cq4_selected_edges.rq",
+      "period": "july",
+      "rows": 16,
+      "passed": true
+    },
+    {
+      "file": "cq5_classification.rq",
+      "period": "january",
+      "rows": 242,
+      "passed": true
+    },
+    {
+      "file": "cq5_classification.rq",
+      "period": "july",
+      "rows": 242,
+      "passed": true
+    },
+    {
+      "file": "cq6_report.rq",
+      "period": "january",
+      "rows": 242,
+      "passed": true
+    },
+    {
+      "file": "cq6_report.rq",
+      "period": "july",
+      "rows": 242,
+      "passed": true
+    }
+  ],
+  "sha256": {
+    "alignment-shapes.ttl": "3cb1a220ecc8a5a5b0a837d881c8e87709631be4a9382afd1eb99bd6cbaa710d",
+    "analytics-core.owl": "9d25b7039bb6049aad5003204f964594ad534c1503887cef8bae98a0aacf1794",
+    "analytics-core.ttl": "046f4ef88e95fb5fbd9b0861c395498c93032e68d3721c05e70e245df15afa83",
+    "article-example.ttl": "7b7047a799f057cd7e1785cfd7a1ec14d6182389027083f198fd2b59f3ad9ff2",
+    "constraints.ttl": "3b0149a00b11fb2f5248c6f6a3f4ad70d31b3a9d7db70cee3bd9991fe2f949b8",
+    "cxl-example.ttl": "4242355b6af83e51e708a26ce63e86a765875e901f63891191b912cf6b2443a0",
+    "data/assessments.csv": "eb3de06e073107114b6df48acbc9fafe45a25b233f31725be02e0c61aa7f8304",
+    "data/example-summary.json": "61deb5625a748d88a5a19332e8b72f456f431f60a93b9cea5ace9b8c74e9b6af",
+    "data/run-metadata.json": "d433b156285c6d9645277b3928e8c0084742c4e4c60121881aa79fe441edeef8",
+    "generate_example.py": "1412d8a42a0d9d265367764eb673957e63a28420f60a25adbfe4e1509cca91f4",
+    "queries/cq1_factors.rq": "ff8c04092052c2e47c50c7db0666b3332fe57c0197ae5fa88cd9bd67583f122b",
+    "queries/cq2_rank_st.rq": "51849c4c63a6ac1970aa3b1b6d96f2eaaebbfa97373982b65381f7b87807b0e9",
+    "queries/cq3_strong_effects.rq": "ffe7eedc0c1c4e694a051ea0c91c226c2263151099636e4b00f3c3d7f754dc51",
+    "queries/cq4_selected_edges.rq": "94433036bf7d305311e7638925e8d504970ba4c2d237aef49ef1afd2bc2d871d",
+    "queries/cq5_classification.rq": "e1e22bbf61c7b728ed9d6ba7ac6c25a6971665d430ff25fa928ede549c2d842a",
+    "queries/cq6_report.rq": "c48507db85b1c564925f38e4ad37a43849aeadb1ee77d6ada992f04228f6af0c",
+    "requirements.txt": "70cc926bd21c556da85665eccfe60183e687bf665bef0eed59399652ba6367d2",
+    "source-manifest.json": "26ce3481e2c0c869d6940ca35a5dac8095b88253bccc6bbbfb1c48dd2b1aef75",
+    "validate.py": "6f3f10f1da615925108a79fa82ef7be47b5747cba9c374787b05441aedc6027e",
+    "validate_alignment.py": "acd2900ddf031d3aac09e164421fd75e54bc964afd8080f60bb91e97c09f53d1"
+  }
+}

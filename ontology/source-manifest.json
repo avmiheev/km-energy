@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "article": {
+    "file": "Козлов_Михеев_rev05.docx",
+    "revision": "rev05",
+    "sha256": "edb5aa0dc5d708bcc32326a1ad2c28fb553f5eeed7247e8129607ab0b030e8d4",
+    "bytes": 2573161
+  },
+  "source_runs": [
+    {
+      "file": "ce_2013-01_dowhy_a4ae95b6c5fb8ac2.json",
+      "sha256": "ff31ade8cd599e92434fed8eda36cd10f0958221504a066b79a1c7ad99a3555a",
+      "bytes": 320651,
+      "scope": "edges (X-to-Y only); z_edges are outside this example"
+    },
+    {
+      "file": "ce_2013-07_dowhy_ca3b781aa7162aef.json",
+      "sha256": "4ee7dc1d9ceeaf2d2dc12ac4cf1f673cecf439994750de72402ea038582fcecc",
+      "bytes": 321648,
+      "scope": "edges (X-to-Y only); z_edges are outside this example"
+    }
+  ],
+  "extracts": {
+    "data/assessments.csv": {
+      "sha256": "eb3de06e073107114b6df48acbc9fafe45a25b233f31725be02e0c61aa7f8304"
+    },
+    "data/run-metadata.json": {
+      "sha256": "d433b156285c6d9645277b3928e8c0084742c4e4c60121881aa79fe441edeef8"
+    }
+  },
+  "transformations": [
+    "Extract all 242 X-to-Y edges per month (22 factors x 11 indicators).",
+    "Preserve every original numeric token for defined st and ce_normalized as CSV text.",
+    "For excluded=true, omit numeric placeholders and use status undefined, without category.",
+    "Keep defined ST <= 0 and |CE| >= 0.1 as status No_ST, without category.",
+    "Apply rev05 Table 1 to other defined pairs; do not modify or re-estimate ST or CE.",
+    "Select map edges strictly by ST > 0.1 and |CE| > 0.3; weight is signed CE.",
+    "Dataset resources refer to original monthly scenario sets; scenario rows are not published here."
+  ],
+  "statistical_recomputation": false,
+  "generated": {
+    "article-example.ttl": {
+      "sha256": "7b7047a799f057cd7e1785cfd7a1ec14d6182389027083f198fd2b59f3ad9ff2"
+    },
+    "cxl-example.ttl": {
+      "sha256": "4242355b6af83e51e708a26ce63e86a765875e901f63891191b912cf6b2443a0"
+    },
+    "data/example-summary.json": {
+      "sha256": "61deb5625a748d88a5a19332e8b72f456f431f60a93b9cea5ace9b8c74e9b6af"
+    }
+  },
+  "generator": {
+    "file": "generate_example.py",
+    "sha256": "1412d8a42a0d9d265367764eb673957e63a28420f60a25adbfe4e1509cca91f4",
+    "dependencies": "Python 3.10+ standard library"
+  }
+}

@@ -1,9 +1,10 @@
 PREFIX a: <https://w3id.org/km-energy/ontology#>
 PREFIX ex: <https://w3id.org/km-energy/example#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-# CQ1. Which factors have reported assessments for profit in this experiment?
+# CQ1. Which factors have assessment records for profit in this experiment?
 SELECT DISTINCT ?factor ?factorLabel WHERE {
- VALUES (?experiment ?indicator) { (ex:italyExperiment ex:profit) }
+ VALUES ?experiment { ex:italyExperiment }
+ VALUES ?indicator { ex:profit_eur }
  ?assessment a:experiment ?experiment; a:indicator ?indicator; a:factor ?factor.
  ?factor rdfs:label ?factorLabel.
 }

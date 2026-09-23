@@ -1,0 +1,47 @@
+@prefix a: <https://w3id.org/km-energy/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Explicit nodes and metric results are optional in the compact RDF representation.
+# When supplied, they must agree with the compact values and endpoint references.
+a:FactorNodeShape a sh:NodeShape; sh:targetClass a:FactorNode;
+ sh:property [sh:path a:representsFactor; sh:minCount 1; sh:maxCount 1; sh:class a:AnalyticalFactor];
+ sh:property [sh:path a:factorNodeMap; sh:minCount 1; sh:maxCount 1; sh:class a:CognitiveMap].
+a:IndicatorNodeShape a sh:NodeShape; sh:targetClass a:IndicatorNode;
+ sh:property [sh:path a:representsIndicator; sh:minCount 1; sh:maxCount 1; sh:class a:OutputIndicator];
+ sh:property [sh:path a:indicatorNodeMap; sh:minCount 1; sh:maxCount 1; sh:class a:CognitiveMap].
+a:MetricResultShape a sh:NodeShape;
+ sh:targetClass a:SensitivityIndex, a:DirectedEffect;
+ sh:property [sh:path a:numericValue; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:decimal].
+a:AssessmentProjectionShape a sh:NodeShape; sh:targetClass a:InfluenceAssessment;
+ sh:property [sh:path a:stResult; sh:maxCount 1; sh:class a:SensitivityIndex];
+ sh:property [sh:path a:ceResult; sh:maxCount 1; sh:class a:DirectedEffect];
+ sh:sparql [sh:message "Явный результат ST должен совпадать с числовым свойством st оценки."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+  SELECT $this WHERE { $this a:stResult/a:numericValue ?value.
+    FILTER NOT EXISTS { $this a:st ?st. FILTER (?st = ?value) }
+  }"""];
+ sh:sparql [sh:message "Явный результат CE должен совпадать с числовым свойством ce оценки."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+  SELECT $this WHERE { $this a:ceResult/a:numericValue ?value.
+    FILTER NOT EXISTS { $this a:ce ?ce. FILTER (?ce = ?value) }
+  }"""].
+a:EdgeProjectionShape a sh:NodeShape; sh:targetClass a:MapEdge;
+ sh:property [sh:path a:sourceNode; sh:maxCount 1; sh:class a:FactorNode];
+ sh:property [sh:path a:targetNode; sh:maxCount 1; sh:class a:IndicatorNode];
+ sh:property [sh:path a:edgeCategory; sh:maxCount 1; sh:class a:LinkCategory];
+ sh:sparql [sh:message "Исходный узел должен представлять фактор ребра и принадлежать той же карте."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+  SELECT $this WHERE { $this a:sourceNode ?node; a:source ?factor; a:inMap ?map.
+    FILTER NOT EXISTS { ?node a:representsFactor ?factor; a:factorNodeMap ?map }
+  }"""];
+ sh:sparql [sh:message "Целевой узел должен представлять показатель ребра и принадлежать той же карте."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+  SELECT $this WHERE { $this a:targetNode ?node; a:target ?indicator; a:inMap ?map.
+    FILTER NOT EXISTS { ?node a:representsIndicator ?indicator; a:indicatorNodeMap ?map }
+  }"""];
+ sh:sparql [sh:message "Категория ребра должна совпадать с категорией представленной оценки."@ru;
+  sh:select """PREFIX a: <https://w3id.org/km-energy/ontology#>
+  SELECT $this WHERE { $this a:edgeCategory ?category; a:basedOn ?assessment.
+    FILTER NOT EXISTS { ?assessment a:category ?category }
+  }"""].

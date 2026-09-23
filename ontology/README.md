@@ -1,32 +1,101 @@
-# KM Energy ontology
+# Онтология аналитического контура и данные rev05
 
-Conceptual ontology of the analytical workflow for causal-cognitive analysis of energy-system optimization results.
+Версия **0.3.0**, 23 сентября 2026 г. Приложение сопровождает раздел 1.5 и результаты статьи М.В. Козлова и А.В. Михеева «Автоматизированное построение каузально-когнитивной модели для интерпретации результатов оптимизационного моделирования энергетических систем», редакция **rev05**.
 
-- [Turtle](analytics-core.ttl)
-- [OWL / RDF/XML](analytics-core.owl)
-- [Example instances](article-example.ttl)
-- [Explicit graph nodes and metric results](cxl-example.ttl), to be loaded together with `article-example.ttl`.
-- [Six SPARQL competency queries](queries/README.md), with the question-to-query mapping, execution instructions and expected results.
+Вместо пяти округленных пар rev01 представлены сохраненные оценки двух периодов, актуальные правила классификации, две карты и исполняемые проверки. Приложение воспроизводит представление и классификацию результатов, а не исходный оптимизационный эксперимент.
 
-Version 0.2.0 contains 38 named classes and 82 object properties. The corresponding conceptual map covers 34 classes and 55 relations; the remaining terms describe metadata, technical profiles and additional links. The RDF/XML and Turtle files represent the same RDF graph (945 triples).
+## Файлы
 
-Ontology IRI: `https://w3id.org/km-energy/ontology`.
-Term namespace: `https://w3id.org/km-energy/ontology#`.
-Example namespace: `https://w3id.org/km-energy/example#`.
+| Файл | Содержание |
+|---|---|
+| `analytics-core.ttl`, `analytics-core.owl` | Одно OWL-описание в двух сериализациях. |
+| `article-example.ttl` | Два эксперимента, ссылки на наборы сценариев, 484 записи оценок, правило, карты и отчеты. |
+| `cxl-example.ttl` | Явные узлы карт и объекты определенных числовых результатов. |
+| `data/assessments.csv`, `data/run-metadata.json` | Агрегированные оценки и метаданные сохраненных запусков для генерации RDF. |
+| `data/example-summary.json` | Сводные количества категорий, статусов и ребер. |
+| `generate_example.py`, `source-manifest.json` | Генератор и сведения о происхождении файлов с контрольными суммами. |
+| `queries/` | Шесть SPARQL-запросов, инструкция, ожидаемые результаты и проверки. |
+| `constraints.ttl`, `alignment-shapes.ttl` | SHACL-ограничения структуры, контекста, классификации и графических представлений. |
+| `validate.py`, `validate_alignment.py` | Переносимые проверки данных и намеренно ошибочных примеров. |
+| `validation-results.json`, `validation-report.ttl`, `alignment-validation.json` | Протоколы проверок этого комплекта. |
+| `requirements.txt` | Версии зависимостей для воспроизведения проверки. |
 
-The w3id registration request is [pull request #6703](https://github.com/perma-id/w3id.org/pull/6703); its current status is available there. This working version is not a frozen article release and has no assigned DOI.
+## Словарь
 
-The example reproduces five rounded pairs from the manuscript revision rev01. It illustrates the representation and queries; it does not provide raw scenario data or reproduce the new January/July calculations. Ontology validation does not establish the validity of causal assumptions.
+Ядро таблицы 2 статьи содержит 14 классов и 24 объектных свойства с указанными областями определения, значениями и кратностями. Полный словарь сохраняет 38 именованных классов и 82 объектных свойства: дополнительно представлены контекст модели, процессы анализа, числовые результаты и узлы графа. RDF/XML и Turtle представляют одинаковый граф из 948 троек.
 
-## Running the SPARQL examples
+`InfluenceAssessment` связывает одну пару с экспериментом и набором данных. Оценки января и июля имеют разные идентификаторы. `FactorNode` и `IndicatorNode` обозначают графические узлы, а `AnalyticalFactor` и `OutputIndicator` - сами величины. Числовые поля `st`, `ce` и объекты результатов должны содержать одинаковые значения.
 
-Load `analytics-core.ttl` and `article-example.ttl` into one default graph. No OWL inference, remote SPARQL endpoint or resolution of w3id IRIs is required. From the repository root:
+Категории `Critical`, `StrongLowST`, `Uncertainty`, `Background`, `Moderate` являются экземплярами `LinkCategory`. Подпись `StrongLowST` приведена к названию «Надёжные» в статье; это условное имя категории, а не утверждение о статистической надежности оценки.
+
+## Данные и периоды
+
+| Период | Эксперимент | Карта | Отчет | Пары | Ребра |
+|---|---|---|---|---:|---:|
+| Январь 2013 | `ex:italyExperiment` | `ex:demoMap` | `ex:demoReport` | 242 | 20 |
+| Июль 2013 | `ex:italyExperimentJuly` | `ex:julyMap` | `ex:julyReport` | 242 | 16 |
+
+Префикс `ex:` означает `https://w3id.org/km-energy/example#`. Идентификатор `ex:demoMap` сохранен для совместимости с запросом из раздела 1.5 статьи; теперь он выбирает актуальную январскую карту.
+
+Исходники - сохраненные файлы `ce_2013-01_dowhy_a4ae95b6c5fb8ac2.json` и `ce_2013-07_dowhy_ca3b781aa7162aef.json`. Перенесены значения `st` и `ce_normalized`. Прежнее поле `classification` не используется: новые категории вычислены по rev05. Числа не округляются и не обрезаются. Поэтому показанное в статье 0,70 само по себе не доказывает прохождение границы 0,7.
+
+По метаданным каждый исходный запуск включает 1536 наблюдений. `ex:scenarioDataset` и `ex:scenarioDatasetJuly` имеют статус `reference_only`: они обозначают наборы сценариев, а не 242 строки агрегированных оценок. Исходные сценарные массивы не включены в RDF.
+
+Эффект соответствует стандартизованному коэффициенту парной линейной регрессии со свободным членом, с масштабами по выборке соответствующего месяца. Вес ребра равен сохраненному `ce_normalized`; техническое преобразование `weight_graph` исходного сервиса не применяется. Неизвестные версии программ и отсутствующие сведения не подставляются по предположению; класс `CompleteAssessment` не присваивается.
+
+## Классификация и статусы
+
+Границы `stLow`, `stHigh`, `ceLow`, `ceStrong` у `ex:table1Rule` равны **0,3; 0,7; 0,1; 0,3**. Используется модуль `ce`, а знак оценки сохраняется.
+
+| Категория | Условие для `st` | Условие для модуля `ce` |
+|---|---|---|
+| Критические | Не менее 0,7 | Не менее 0,3 |
+| Надёжные | Больше нуля и меньше 0,3 | Не менее 0,3 |
+| Источники неопределённости | Не менее 0,7 | Меньше 0,3 |
+| Фоновые | Меньше 0,7 | Меньше 0,1 |
+| Умеренные | Остальные сочетания при положительном `st` | Остальные сочетания |
+
+Особые статусы обрабатываются до присвоения категории:
+
+- `No_ST`: обе метрики определены, `st` не больше нуля, модуль `ce` не меньше 0,1. Значения сохраняются, поле `category` отсутствует. Это отдельный статус таблицы 6.
+- `undefined`: метрика не определена. Для 22 июльских пар с постоянной мощностью СЭС `st` и `ce` отсутствуют; они не заменяются нулями. Категория отсутствует.
+- `reported`: метрики определены и присвоена одна из пяти категорий. Определенный нулевой эффект отличается от отсутствующей оценки.
+
+Класс `ReportedAssessment` описывает происхождение определенных чисел из материалов статьи и может сочетаться со статусом `No_ST`. Строковое поле состояния и класс происхождения выполняют разные функции.
+
+| Категория или статус | Январь | Июль |
+|---|---:|---:|
+| Критические | 5 | 6 |
+| Надёжные | 9 | 5 |
+| Источники неопределённости | 3 | 1 |
+| Фоновые | 181 | 164 |
+| Умеренные | 39 | 42 |
+| `No_ST` | 5 | 2 |
+| `undefined` | 0 | 22 |
+| Всего | 242 | 242 |
+
+Кандидаты карты - все 242 записи периода. Ребро создается только при строгом фильтре `st > 0.1 && ABS(ce) > 0.3` для определенной оценки с допустимым статусом. Равенство порогу не проходит фильтр. Среди ребер 5/8/7 критических, надежных и умеренных в январе и 6/5/5 в июле. У карт 11 общих пар с сохранением знака, 9 только январских и 5 только июльских.
+
+## Запуск
+
+Из корня репозитория:
 
 ```sh
-python -m pip install rdflib==7.6.0 pyparsing==3.3.2
-python ontology/queries/run_queries.py
+python -m pip install -r ontology/requirements.txt
+python ontology/generate_example.py --check
+python ontology/queries/run_queries.py --check
+python ontology/validate.py
+python ontology/validate_alignment.py
 ```
 
-The six queries return 2, 2, 2, 4, 5 and 5 rows respectively. See [queries/README.md](queries/README.md) for the six questions, parameters and interpretation, and [expected-results.json](queries/expected-results.json) for all returned RDF terms. The queries retrieve, rank and classify stored estimates; they do not recompute sensitivity indices or directed effects.
+`generate_example.py --check` проверяет совпадение опубликованных производных файлов с результатом генерации; запуск без `--check` пересоздает их из CSV и метаданных. Для повторного извлечения из двух исходных JSON rev05 используются явные параметры `--source-dir` и `--article`; обычная проверка не требует исходных JSON или DOCX. Генератор рассчитан на указанные имена файлов и две матрицы 22 × 11.
 
-Maintainer: [Alexey Mikheev](https://github.com/avmiheev).
+Из отдельной папки приложения те же скрипты запускаются без префикса `ontology/`. Порядок запросов и параметры периодов приведены в [инструкции SPARQL](queries/README.md). Сеть нужна для установки зависимостей, но не для проверки готового комплекта.
+
+## Границы проверки
+
+OWL задает словарь и логические ограничения, SHACL проверяет явно записанные сведения, SPARQL выбирает и классифицирует сохраненные оценки. Генератор создает пример и карты; он не вызывает оптимизационную модель или DoWhy. Работа этого самостоятельного приложения не доказывает включение RDF в полный расчетный сервис.
+
+Проверка не повторяет оценивание чувствительности и не устанавливает сходимость расчетов или причинность в реальной энергосистеме. Полная проверка OWL DL специализированным механизмом логического вывода не заявляется.
+
+Пространство имен `https://w3id.org/km-energy/ontology#` зарегистрировано, [перенаправления w3id](https://w3id.org/km-energy) действуют. Для локального разбора RDF разрешение этих адресов не требуется.
